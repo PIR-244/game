@@ -1,0 +1,44 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/plavanie/poisk.css">
+  <h3>Плавание</h3>
+  <p><img src="/images/plavanie/koridet.jpg" alt="."><br>Ты направляешься <%=user.assignments.shop.name_port%><br><span id="span_text"></span></p><div class="span_a">
+    <a href="/plavanie/assignments" id="span_a"><img src="/images/plavanie/obnovit.png" title="Обновить"></a>
+  </div>
+
+<ul class="list_a">
+  <li><form class="form" action="/plavanie/assignments" method="post">
+    <input type="hidden" name="away" value="0">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span"><img src="/images/plavanie/prichal.png"></span>Вернуться домой</div></button>
+  </form></li>
+</ul>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>
+<script type="text/javascript">
+var last_action = <%- JSON.stringify(user.war.last_action) %>;
+var date_now = <%- JSON.stringify(user.last_action) %>;
+var last_action = new Date(last_action);
+var date_now = new Date(date_now);
+date_now = Math.floor((date_now.getTime() - last_action.getTime())*0.001);
+var date_now1 = date_now;
+if (date_now1 < 60) {
+  if (date_now1 < 10) {
+  date_now = '0'+date_now1;
+  }
+  date_now = '00.'+date_now;
+} else {
+  date_now = '0'+Math.floor(date_now1/60)+'.';
+  date_now1 = Math.floor((date_now1/60-Math.floor(date_now1/60))*60);
+  if (date_now1 < 10) {
+  date_now = date_now+'0'+date_now1;
+  } else {
+    date_now = date_now + date_now1;
+  }
+}
+  document.getElementById('span_text').innerHTML = date_now;
+</script>

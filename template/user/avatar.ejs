@@ -1,0 +1,68 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/avatar.css">
+<h3><%= zaglav_sex %> аватарки</h3>
+<div class="ul_li">
+  <p><img src="/images/avatarky/<%= value_img[0] %>.jpg" class="img_shop" alt=".">
+    <% if(requirement[0].length > 0) { %>
+    <br>Требование: Уровень навигации <%= requirement[0] %>
+    <% } %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: <%= price[0] %></span>
+    <form class="form" action="/user/avatar" method="post">
+      <input type="hidden" name="value_img" value="<%= value_img[0] %>">
+      <button type="submit" class="button_buy" id="<%= value_img[0] %>">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><img src="/images/avatarky/<%= value_img[1] %>.jpg" class="img_shop" alt=".">
+    <br>Требование: Уровень навигации <%= requirement[1] %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: <%= price[1] %></span>
+    <form class="form" action="/user/avatar" method="post">
+      <input type="hidden" name="value_img" value="<%= value_img[1] %>">
+      <button type="submit" class="button_buy" id="<%= value_img[1] %>">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><img src="/images/avatarky/<%= value_img[2] %>.jpg" class="img_shop" alt=".">
+    <% if(requirement[2].length > 0) { %>
+    <br>Требование: Уровень навигации <%= requirement[2] %>
+    <% } %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: <%= price[2] %></span>
+    <form class="form" action="/user/avatar" method="post">
+      <input type="hidden" name="value_img" value="<%= value_img[2] %>">
+      <button type="submit" class="button_buy" id="<%= value_img[2] %>">К</button>
+    </form></div>
+</div>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/user/avatar?sex=<%= sex %>&page=1">1</a>
+    <a class="button_page" id="button_page2" href="/user/avatar?sex=<%= sex %>&page=2">2</a>
+</div>
+
+<ul class="list_a">
+<li><a href="/user/avatar?sex=<%= href_sex %>"><div class="body_div">
+  <span class="body_span"><img src="/images/user/<%= href_sex %>.png" alt=''></span><%= list_sex %> аватарки</div></a></li>
+</ul>
+
+<script type="text/javascript">
+  var avatar_index = <%- JSON.stringify(user.avatar_index) %>;
+  var value_img = <%- JSON.stringify(value_img) %>;
+
+    if (avatar_index == value_img[0] || avatar_index == value_img[1] || avatar_index == value_img[2]) {
+      document.getElementById(avatar_index).style.width = '0px';
+      document.getElementById(avatar_index).style.height = '0px';
+      document.getElementById(avatar_index).innerHTML = '';
+    }
+
+    var page = <%- JSON.stringify(page) %>;
+    if (page!=2) {
+      document.getElementById('button_page1').classList.add('disabled');
+    } else {
+      document.getElementById('button_page2').classList.add('disabled');
+    }
+
+  var err_message_low= <%- JSON.stringify(err_message_low) %>;
+    if (err_message_low.length>0) {
+      document.getElementById('err_message_low').innerHTML = err_message_low;
+    }
+</script>

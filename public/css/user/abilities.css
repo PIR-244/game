@@ -1,0 +1,94 @@
+h3 {
+  text-align:center;
+  padding: 0 4.2% 15px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 16px;
+  color: #946012;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.img_shop{
+  margin-top: 5px;
+  margin-right: 8px;
+float: left;
+font-size: 10px;
+font-style: italic;
+
+}
+#letters_activity_abilities{
+  text-align: center;
+}
+.block_div{
+  display: inline-block;
+}
+.img_shop_activity{
+font-size: 10px;
+font-style: italic;
+}
+li{
+  margin-bottom: 3px;
+}
+.span_text{
+  display: block;
+  text-align: center;
+  color: #302314;
+  font-size: 15px;
+}
+.span_block_text{
+  display: block;
+  color: #302314;
+  font-size: 15px;
+}
+
+.ul_li {
+  background-image: url(/images/poloskatuskl.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 0 4px 4.2%;
+min-height: 66px;
+}
+.image_div{
+  display: flow-root;
+  margin-left: 64px;
+  margin-top: 2px;
+}
+.button{
+  border: 0px;
+ background: transparent;
+ color: #563711;
+ font-size: 13px;
+ cursor: pointer;
+}
+.block_div_shop{
+  display: block;
+  margin-left: 17%;
+  margin-right: 17%;
+  text-align: center;
+}
+
+.button:hover{
+ color: #946012;
+}
+.list_a{
+  margin-top: 7px;
+}
+
+
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}
+.body_span1{
+  position: relative;
+  margin-right: 3px;
+  top: 4px;
+}
+.body_span1 img{
+  width: 19px;
+}

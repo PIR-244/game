@@ -1,0 +1,80 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/alchimik.css">
+  <h3>Настойки</h3>
+  <ul id="letters_ul" class="pol_tuskl">
+  </ul>
+
+<ul class="list_a">
+    <li><a href="/user"><div class="body_div">
+      <span class="body_span"><img src="/images/navi_verch/pers2.png"></span>Персонаж</div></a></li>
+      <li><a href="/user/skills"><div class="body_div">
+        <span class="body_span"><img src="/images/college/navyki.png"></span>Навыки</div></a></li>
+        <li><a href="/user/abilities"><div class="body_div">
+          <span class="body_span"><img src="/images/user/sposobnosti.png"></span>Способности</div></a></li>
+          <li><a href="/alchimik"><div class="body_div">
+            <span class="body_span1"><img src="/images/city/alkhimik1.png"></span>Лавка алхимика</div></a></li>
+</ul>
+
+<script type="text/javascript">
+
+var names_images = <%- JSON.stringify(names_images) %>;
+var alt_images = <%- JSON.stringify(alt_images) %>;
+var value_potions = <%- JSON.stringify(value_potions) %>;
+var potions_message_part1 = <%- JSON.stringify(potions_message_part1) %>;
+var potions_message_part2 = <%- JSON.stringify(potions_message_part2) %>;
+var activity = <%- JSON.stringify(user.potions) %>;
+
+var letters_ul = document.getElementById('letters_ul');
+if (value_potions[0]) {
+  letters_ul.style.marginBottom = '7px';
+  var last_action_user = <%- JSON.stringify(user.last_action) %>;
+  for (var i = 0; i < value_potions.length; i++) {
+    var li = document.createElement('li');
+    letters_ul.appendChild(li);
+    li.style.minHeight = '66px';
+    li.style.padding = '5px 3.2% 4px 4.2%';
+    var form = '';
+    if (activity[value_potions[i]].number > 0) {
+      form = '<span class="span_block_text2">Количество: '+activity[value_potions[i]].number+'</span>'+
+      '<div class="block_div_shop"><form class="form" action="/user/alchimik" method="post">'+
+      '<input type="hidden" name="value_potions" value="'+value_potions[i]+'">'+
+      '<button type="submit" class="button">И</button>'+
+    '</form></div>';
+    }
+    var created = '';
+    var date_now = new Date(last_action_user);
+    var date_potions = new Date(activity[value_potions[i]].created);
+    if (date_now < date_potions) {
+      var hours = '';
+      if(date_potions.getHours() < 10)
+          hours = '0';
+      var minutes = '';
+      if(date_potions.getMinutes() < 10)
+          minutes = '0';
+      var month = date_potions.getMonth();
+      var month_rus = '';
+      if (month == 0) { month_rus='Января'; }
+      else if (month == 1) { month_rus='Февраля'; }
+      else if (month == 2) { month_rus='Марта'; }
+      else if (month == 3) { month_rus='Апреля'; }
+      else if (month == 4) { month_rus='Мая'; }
+      else if (month == 5) { month_rus='Июня'; }
+      else if (month == 6) { month_rus='Июля'; }
+      else if (month == 7) { month_rus='Августа'; }
+      else if (month == 8) { month_rus='Сентября'; }
+      else if (month == 9) { month_rus='Октября'; }
+      else if (month == 10) { month_rus='Ноября'; }
+      else if (month == 11) { month_rus='Декабря'; }
+      var clock = hours + date_potions.getHours()+ ":"+ minutes + date_potions.getMinutes();
+      created = '<span class="span_block_text1"></span><span class="span_block_text3">Активно до '+date_potions.getDate()+' '+month_rus+' '+clock+'</span>';
+    }
+    li.innerHTML = '<img class="img_shop" src="/images/alchimik/'+names_images[i]+'.jpg" alt="."><div class="image_div">'+
+      '<span class="span_block_text"><strong>'+alt_images[i]+'</strong><br>'+potions_message_part1[i]+
+      '<br>Действие: '+potions_message_part2[i]+'ч.'+created+'</span></div>'+form;
+  }
+} else {
+  letters_ul.innerHTML = '<span class="span_text">У вас нет настоек!</span>';
+  letters_ul.style.paddingBottom = '13px';
+}
+</script>

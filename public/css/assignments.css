@@ -1,0 +1,49 @@
+h3 {
+  text-align:center;
+  padding: 0 4.2% 0px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 15px;
+  text-align: left;
+  padding: 7px 1.2% 5px 1.2%;
+  color: #302314;
+}
+button{
+  margin: auto;
+  display: block;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/vzyatsKNP.jpg);
+background-size: 64px 28px;
+ height: 28px;
+ width: 64px;
+ color: transparent;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.help-block{
+  font-size: 13px;
+  color: red;
+  text-align: center;
+  padding-bottom: 8px
+}
+#vsio_p{
+  padding-top: 10px;
+  padding-bottom: 11px;
+  text-align: center;
+}
+.btn_conf{
+  margin: left;
+  text-align: left;
+  max-width: 100%;
+}
+
+.body_span3{
+  position: relative;
+  margin-right: 3px;
+  top: 4px;
+}
+.body_span3 img{
+  width: 19px;
+}

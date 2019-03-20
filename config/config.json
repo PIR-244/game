@@ -1,0 +1,22 @@
+{
+  "port": 80,
+  "mongoose": {
+    "uri": "mongodb://localhost/users",
+    "options": {
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  },
+  "session": {
+    "secret": "AsD84Bi",
+    "key": "k3784hrTy",
+    "cookie": {
+      "path": "/",
+      "httpOnly": true,
+      "maxAge": 604800000
+    }
+  }
+}

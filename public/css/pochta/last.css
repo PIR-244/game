@@ -1,0 +1,133 @@
+ul li div a:hover{
+  color: #946012;
+}
+h3 {
+  text-align:center;
+  padding: 0 4.2% 5px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 13px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  padding-left: 4.2%;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #302314;
+}
+#last{
+  color: #946012;
+}
+#noted{
+  color: #563711;
+}
+#noted:hover{
+  color: #946012;
+}
+#letters_undefined{
+  font-size: 14px;
+  color: #302314;
+  text-align: center;
+}
+.pol_tuskl li{
+  background-image: url(/images/poloskatuskl.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+}
+ul li div a{
+  margin-top: 8px;
+  display: inline-block;
+  margin-right: 15px;
+}
+.span_text{
+  font-size: 15px;
+  color: #302314;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  position: relative;
+  top: 4px;
+  max-width: 100%;
+}
+
+.span_time{
+  font-size: 13px;
+  color: #946012;
+  font-style: italic;
+  display: inline-block;
+}
+.body_div1{
+  margin: 4px 3.6% 8px 3.6%;
+}
+.form{
+  text-align: center;
+    display: block;
+}
+
+.button_buy{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/perepiskaKNP.jpg);
+background-size: 118px 24px;
+ height: 24px;
+ width: 118px;
+ color: transparent;
+ margin-top: 3px;
+}
+.button_buy1{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/novoeKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ margin-top: 3px;
+}
+#button_page{
+
+  padding: 14px 0 10px 0;
+  text-align: center;
+}
+.button_page{
+
+  display: inline-block;
+  margin: auto;
+  background: #d2b777;
+  font-size: 18px;
+  height: 21px;
+  width: 22px;
+  margin: 0px 2px;
+}
+.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    background: #a97b4e; /* цвет текста для нективной ссылки */
+    display: inline-block;
+    margin: auto;
+    font-size: 18px;
+    height: 21px;
+    width: 22px;
+    margin: 0px 2px;
+}
+.out_no{
+  display: inline-block;
+  margin: auto;
+  background: transparent;
+  font-size: 0px;
+  height: 0px;
+  width: 0px;
+  margin: 0px 2px;
+}
+
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}

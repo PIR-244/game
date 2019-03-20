@@ -1,0 +1,56 @@
+<% if(user) { %>
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/frontpage.css">
+<meta name="description" content='Добро пожаловать в браузерную онлайн-игру про пиратов "Корсары"! Тебя ждут морские сражения, клановые войны, а также обЪединившись с другими корсарами ты сможешь грабить золотые караваны.'>
+<div id="text">
+<h3>Добро пожаловать, <%=user.get('username')%>!</h3>
+  <p><img src="/images/frontpage/moment.jpg" alt="."><br>В данный момент вместе с тобой испытывают судьбу на прочность
+    <a href="/online" title="Онлайн"><%=online%><span id="span_online">(онлайн)</span></a> корсаров.</p>
+</div>
+<ul class="list_a">
+<li><a href="/logbook"><div class="body_div">
+  <span class="body_span3"><img src="/images/frontpage/zhurnal1.png"></span>Судовой журнал</div></a></li>
+<li><a href="/assignments"><div class="body_div">
+  <span class="body_span3"><img src="/images/frontpage/zadania1.png"></span>Задания</div></a></li>
+<li><a href="/city"><div class="body_div">
+  <span class="body_span"><img src="/images/frontpage/gorod1.png"></span>Город</div></a></li>
+<li><a href="#" onclick="plavanie_go()"><div class="body_div">
+  <span class="body_span3"><img src="/images/frontpage/plavanie2.png"></span>Плавание</div></a></li>
+<li><a href="/pochta/last"><div class="body_div">
+  <span class="body_span2"><img src="/images/navi_verch/pochta1.png"></span>Почта</div></a></li>
+<li><a href="/reyting"><div class="body_div">
+  <span class="body_span"><img src="/images/frontpage/reyting.png"></span>Рейтинг</div></a></li>
+<li><a href="/poisk"><div class="body_div">
+  <span class="body_span"><img src="/images/frontpage/poisk.png"></span>Поиск</div></a></li>
+<li><a href="/clan"><div class="body_div">
+  <span class="body_span3"><img src="/images/frontpage/klan.png"></span>Клан</div></a></li>
+</ul>
+
+<script type="text/javascript">
+function plavanie_go() {
+ var value_plavanie = <%- JSON.stringify(user.ship.plavanie) %>;
+ var href_window = '/plavanie'; 
+ if (value_plavanie == 1) {
+    href_window = '/plavanie/battle';
+ } else if (value_plavanie == 2) {
+    href_window = '/plavanie/assignments';
+ }
+window.location.href = href_window;
+   return false;
+}
+</script>
+
+<% } else  { %>
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<div id="text">
+  <link rel="stylesheet" href="/css/frontpage.css">
+  <meta name="description" content='Добро пожаловать в браузерную онлайн-игру про пиратов "Корсары"! Тебя ждут морские сражения, клановые войны, а также обЪединившись с другими корсарами ты сможешь грабить золотые караваны.'>
+<p><img src="/images/frontpage/registratsia.jpg" alt="."><br>Присоединяйся в браузерную игру Корсары.<br>Почуствуй дух "Золотого века" пиратства!</p>
+</div>
+<ul class="list_a">
+  <li><a href="/login"><div class="body_div">Вход</div></a></li>
+  <li><a href="/registration"><div class="body_div">Регистрация</div></a></li>
+</ul>
+<% } %>

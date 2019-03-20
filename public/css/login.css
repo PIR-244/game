@@ -1,0 +1,38 @@
+input{
+  background-color: white;
+  border: 0px;
+  width: 80.9%;
+  margin-left: 9.5%;
+  height: 20px;
+  margin-bottom: 13px;
+}
+h3 {
+  text-align:center;
+  padding: 0 4.2% 10px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 15px;
+  text-align: center;
+  padding: 0 4.2% 3px 4.2%;
+  color: #302314;
+}
+#p1{
+  font-size: 14px;
+  text-align: center;
+  padding: 0 4.2% 10px 4.2%;
+}
+button{
+  margin: auto;
+  display: block;
+  border: 0px;
+ background: transparent;
+  margin-bottom: 13px;
+  cursor: pointer;
+}
+.help-block{
+  font-size: 13px;
+  color: red;
+  text-align: center;
+  padding-bottom: 8px
+}

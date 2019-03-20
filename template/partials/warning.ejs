@@ -1,0 +1,66 @@
+<% if(user) { %>
+<div id="warning_verh"></div>
+<nav id="warning" role="navigation">
+  <% if(user.training > 0) { %>
+  <%-partial('./training_message')%><% } %>
+  <% if(new_message == 1) { %>
+  <div id="new_pochta">Капитан, вам письмо!</div><% } %>
+ <div id="err_message_low"></div>
+ <div id="plavanie"></div>
+   <% if(user.ship.supplies.food == 0 && user.ship.team.sailors +
+        user.ship.team.boarders + user.ship.team.gunners > 0) { %>
+ <div id="team_rip">Провиант закончился, Капитан. Команда голодает</div><% } %>
+ <% if(user.last_action >= user.promo.close_promo) { %>
+ <%-partial('./promo_message')%><% } %>
+</nav>
+<div id="warning_niz"></div>
+
+
+
+<script type="text/javascript">
+var plavanie = <%- JSON.stringify(plavanie_message) %>;
+var last_action = <%- JSON.stringify(user.war.last_action) %>;
+var date_now = <%- JSON.stringify(user.last_action) %>;
+var last_action = new Date(last_action);
+var date_now = new Date(date_now);
+date_now = Math.floor((date_now.getTime() - last_action.getTime())*0.001);
+var date_now1 = date_now;
+if (date_now < 10) {
+  date_now = '0'+date_now;
+}
+  if (plavanie == 1) {
+    document.getElementById('plavanie').innerHTML = 'Плавание. Идет поиск противников: 00.'+date_now+' <a id="plavanie_mess_a" href="/plavanie/battle">[Перейти]</a>';
+  } else if (plavanie == 2) {
+    document.getElementById('plavanie').innerHTML = 'Плавание. Противник найден: 00.'+date_now+' <a id="plavanie_mess_a" href="/plavanie/battle">[Перейти]</a>';
+  } else if (plavanie == 3) {
+    document.getElementById('plavanie').innerHTML = 'Ожидание начала сражения: 00.'+date_now+' <a id="plavanie_mess_a" href="/plavanie/battle">[Перейти]</a>';
+  } else if (plavanie == 4) {
+    document.getElementById('plavanie').innerHTML = 'Идет морское сражение <a id="plavanie_mess_a" href="/plavanie/battle">[Перейти]</a>';
+  } else if (plavanie == 5) {
+    document.getElementById('plavanie').innerHTML = 'Плавание. Возвращение домой: 00.'+date_now+' <a id="plavanie_mess_a" href="/plavanie/battle">[Перейти]</a>';
+  } else if (plavanie > 5) {
+    if (date_now1 < 60) {
+      date_now = '00.'+date_now;
+    } else {
+      date_now = '0'+Math.floor(date_now1/60)+'.';
+      date_now1 = Math.floor((date_now1/60-Math.floor(date_now1/60))*60);
+      if (date_now1 < 10) {
+      date_now = date_now+'0'+date_now1;
+      } else {
+        date_now = date_now + date_now1;
+      }
+    }
+    if (plavanie == 6) {
+      document.getElementById('plavanie').innerHTML = 'Плавание. Идет поиск пирата: '+date_now+' <a id="plavanie_mess_a" href="/plavanie/assignments">[Перейти]</a>';
+    } else if (plavanie == 7) {
+      document.getElementById('plavanie').innerHTML = 'Плавание. Пират найден: '+date_now+' <a id="plavanie_mess_a" href="/plavanie/assignments">[Перейти]</a>';
+    } else if (plavanie == 8) {
+      document.getElementById('plavanie').innerHTML = 'Плавание. Доставка груза: '+date_now+' <a id="plavanie_mess_a" href="/plavanie/assignments">[Перейти]</a>';
+    } else if (plavanie == 9) {
+      document.getElementById('plavanie').innerHTML = 'Плавание. Перевозка пассажира: '+date_now+' <a id="plavanie_mess_a" href="/plavanie/assignments">[Перейти]</a>';
+    } else if (plavanie == 10) {
+      document.getElementById('plavanie').innerHTML = 'Плавание. Возвращение домой: '+date_now+' <a id="plavanie_mess_a" href="/plavanie/assignments">[Перейти]</a>';
+    }
+  }
+</script>
+<% } %>

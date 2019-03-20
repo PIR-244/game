@@ -1,0 +1,32 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/plavanie/poisk.css">
+  <h3>Плавание</h3>
+  <p><img src="/images/plavanie/poisk.jpg" alt="."><br>Ищем противников<br><span id="span_text"></span></p><div class="span_a">
+    <a href="/plavanie/battle" id="span_a"><img src="/images/plavanie/obnovit.png" title="Обновить"></a>
+  </div>
+
+<ul class="list_a">
+  <li><form class="form" action="/plavanie/battle" method="post">
+    <input type="hidden" name="away" value="0">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span"><img src="/images/plavanie/prichal.png"></span>Вернуться домой</div></button>
+  </form></li>
+</ul>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>
+<script type="text/javascript">
+var last_action = <%- JSON.stringify(user.war.last_action) %>;
+var date_now = <%- JSON.stringify(user.last_action) %>;
+var last_action = new Date(last_action);
+var date_now = new Date(date_now);
+date_now = Math.floor((date_now.getTime() - last_action.getTime())*0.001);
+if (date_now < 10) {
+  date_now = '0'+date_now;
+}
+  document.getElementById('span_text').innerHTML = '00.'+date_now;
+</script>

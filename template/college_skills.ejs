@@ -1,0 +1,77 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/college_skills.css">
+<h3>Навыки</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/metkost.jpg" alt="Меткость">
+  <p><strong>Меткость</strong><br>Увеличивает урон наносимый орудиями<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.marksmanship %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_marksmanship %> из <%= max_number_marksmanship %></span><br>
+    <span class="span_shop_text">Цена: <%= price_marksmanship %> песо</span><br></p>
+    <div class="block_div_shop">
+    <form class="form" action="/college/skills" method="post">
+      <input type="hidden" name="value_skills" value="marksmanship">
+      <button type="submit" class="button_buy">Ул</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/zaschita.jpg" alt="Защита">
+  <p><strong>Защита</strong><br>Повышает защиту корабля<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.protection %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_protection %> из <%= max_number_protection %></span><br>
+    <span class="span_shop_text">Цена: <%= price_protection %> песо</span><br></p>
+    <div class="block_div_shop">
+    <form class="form" action="/college/skills" method="post">
+      <input type="hidden" name="value_skills" value="protection">
+      <button type="submit" class="button_buy">Ул</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/stoykost.jpg" alt="Стойкость">
+  <p><strong>Стойкость</strong><br>Увеличивает количество жизней команды<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.resistance %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_resistance %> из <%= max_number_resistance %></span><br>
+    <span class="span_shop_text">Цена: <%= price_resistance %> песо</span><br></p>
+    <div class="block_div_shop">
+    <form class="form" action="/college/skills" method="post">
+      <input type="hidden" name="value_skills" value="resistance">
+      <button type="submit" class="button_buy">Ул</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/abordazh.jpg" alt="Абордаж">
+  <p><strong>Абордаж</strong><br>Определяет эффективность команды в абордажных схватках<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.boarding %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_boarding %> из <%= max_number_boarding %></span><br>
+    <span class="span_shop_text">Цена: <%= price_boarding %> песо</span><br></p>
+    <div class="block_div_shop">
+    <form class="form" action="/college/skills" method="post">
+      <input type="hidden" name="value_skills" value="boarding">
+      <button type="submit" class="button_buy">Ул</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/navigatsia.jpg" alt="Навигация">
+  <p><strong>Навигация</strong><br>Повышает скорость и маневренность корабля, а также позволяет управлять
+                                   более массивными судами<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.navigation %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_navigation %> из <%= max_number_navigation %></span><br>
+    <span class="span_shop_text">Цена: <%= price_navigation %> песо</span><br></p>
+    <div class="block_div_shop">
+    <form class="form" action="/college/skills" method="post">
+      <input type="hidden" name="value_skills" value="navigation">
+      <button type="submit" class="button_buy">Ул</button>
+    </form></div>
+</div>
+
+<ul class="list_a">
+  <li><a href="/college"><div class="body_div">
+    <span class="body_span"><img src="/images/city/akademia.png"></span>Мореходный колледж</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

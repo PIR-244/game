@@ -1,0 +1,62 @@
+h3 {
+  text-align:center;
+  padding: 0 4.2% 15px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 14px;
+  margin-top: 3px;
+  padding-right: 3.2%;
+  color: #302314;
+  margin-left: 64px;
+}
+.img_shop{
+  margin-top: 5px;
+  margin-right: 8px;
+float: left;
+font-size: 10px;
+font-style: italic;
+}
+
+.form{
+
+  text-align: center;
+    display: block;
+    margin-left: 17%;
+    margin-right: 17%;
+}
+.button_buy{
+  border: 0px;
+ background: transparent;
+ color: #563711;
+ font-size: 13px;
+ cursor: pointer;
+}
+.button_buy:hover{
+ color: #946012;
+}
+.ul_li {
+  background-image: url(/images/8.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 0 4px 4.2%;
+min-height: 66px;
+
+}
+.block_div_shop{
+  display: block;
+  padding-right: 4.2%;
+}
+
+.list_a{
+  margin-top: 5px;
+}
+
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}

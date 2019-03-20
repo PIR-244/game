@@ -1,0 +1,87 @@
+
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/pochta/pochta.css">
+  <h3>Переписка с <%=username%></h3>
+  <div class="block_div_shop">
+  <form class="form" action="/pochta?user=<%=username%>" method="post">
+    <input type="text" maxlength="150" class="input" name="message">
+    <button type="submit" class="button_buy">О</button>
+  </form></div>
+
+<div id="letters_ul">
+</div>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/pochta?user=<%=username%>&page=1">1</a>
+    <a class="button_page" id="button_page2" href="/pochta?user=<%=username%>&page=2">2</a>
+    <a class="button_page" id="button_page3" href="/pochta?user=<%=username%>&page=3">3</a>
+</div>
+
+<ul class="list_a">
+<li><a href="/pochta/last"><div class="body_div">
+  <span class="body_span2"><img src="/images/navi_verch/pochta1.png"></span>Почта</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var page = <%- JSON.stringify(page) %>;
+
+if (page==2) {
+  document.getElementById('button_page2').classList.add('disabled');
+} else if (page==3) {
+  document.getElementById('button_page3').classList.add('disabled');
+} else {
+  document.getElementById('button_page1').classList.add('disabled');
+}
+var letters = <%- JSON.stringify(letters) %>;
+var letters_list = <%- JSON.stringify(letters_list) %>;
+if (letters_list <= 20) {
+  document.getElementById('button_page3').classList.add('out_no');
+}
+if (letters_list <= 10) {
+  document.getElementById('button_page2').classList.add('out_no');
+  document.getElementById('button_page1').classList.add('out_no');
+  document.getElementById('button_page').style.width = '0px';
+  document.getElementById('button_page').style.height = '0px';
+  document.getElementById('button_page').style.padding = '0px';
+}
+
+var letters_ul = document.getElementById('letters_ul');
+if (letters[0] != 0) {
+var last_action_user = <%- JSON.stringify(user.last_action) %>;
+var date_now;
+  letters_ul.style.marginBottom = '7px';
+  for (var i = 0; i < letters.length; i++) {
+    var p = document.createElement('p');
+    letters_ul.appendChild(p);
+    var username = letters[i].sender;
+
+    var date_message = new Date(letters[i].created);
+    date_now = new Date(last_action_user);
+    date_now = Math.floor((date_now.getTime() - date_message.getTime())*0.001);
+    var time_mes = 'сек.'
+    if (date_now>60) {
+      date_now = Math.floor(date_now/60);
+      time_mes = 'мин.'
+      if (date_now>60) {
+        date_now = Math.floor(date_now/60);
+        time_mes = 'ч.'
+        if (date_now>24) {
+          date_now = Math.floor(date_now/24);
+          time_mes = 'д.'
+        }
+      }
+    }
+
+    p.innerHTML = '<a href="/user/info?user='+username+'">'
+                  +username+':</a> <span class="span_text">'+letters[i].message+
+                  '</span><span class="span_time">'+date_now+time_mes+'</span>';
+  }
+}
+</script>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

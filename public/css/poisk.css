@@ -1,0 +1,63 @@
+input::-moz-selection{background: #d2b777; color: black;}
+input::webkit-selection{background: #d2b777; color: black;}
+input::selection{background: #d2b777; color: black;}
+
+h3 {
+  text-align:center;
+  padding: 0 4.2% 10px 4.2%;
+  color: #302314;
+}
+
+p{
+  font-size: 14px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  padding-left: 4.2%;
+  margin-bottom: 3px;
+  color: #302314;
+}
+.form{
+  text-align: center;
+    display: block;
+}
+input{
+  background-color: white;
+  border: 0px;
+  width: 80%;
+  height: 20px;
+  margin-bottom: 6px;
+}
+.button_buy{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/naytiKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ margin-bottom: 10px;
+
+}
+.pol_tuskl li{
+  background-image: url(/images/poloskatuskl.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+}
+ul li div a{
+  margin-top: 8px;
+  display: inline-block;
+  margin-right: 15px;
+}
+ul li div a:hover{
+  color: #946012;
+}
+.body_div1{
+  margin: 4px 3.6% 8px 3.6%;
+}
+.img_shop{
+margin-right: 2px;
+    position: relative;
+    top: 3px;
+    display: inline;
+}

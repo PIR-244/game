@@ -1,0 +1,40 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы дейтсвительно хотите купить корабль "<%=ship.name%>" за <%=ship.price%> песо?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="#" onclick="go_no()"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go_no() {
+  var url = <%- JSON.stringify(url) %>;
+  window.location.href = url;
+}
+function go() {
+ var value_ships = <%- JSON.stringify(value_ships) %>;
+ var href_window = <%- JSON.stringify(url) %>;
+    $.ajax({
+      url: '/verf/ships/confirmation',
+      method: "POST",
+      data: {value_ships:value_ships, url:href_window},
+      statusCode: {
+        200: function(err_status_low){
+          err_status_low = JSON.parse(err_status_low);
+          href_window = href_window + '?err_status_low=' + err_status_low;
+          if (err_status_low >= 5 && err_status_low <= 7) {
+            href_window = href_window + '&value_ships=' + value_ships;
+          }
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+
+</script>

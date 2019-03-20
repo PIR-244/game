@@ -1,0 +1,125 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/college_abilities_info.css">
+<div class="img_display">
+  <img class="img_shop" src="/images/abilities/<%= value_img %>.jpg" alt="."><h3><%= ability.name %></h3>
+  <p><%= ability_message %></p>
+</div>
+<% if(ability_level > 0) { %>
+<div class="ul_li">
+  <div class="block_div_shop"><span class="span_block_text">Ваш уровень <%= ability_level %></span>
+    <span class="span_block_text1"><%= ability_message_low %> <%= ability.levels_proc[ability_level] %><%= proc_s %></span><br>
+  </div>
+</div>
+<% } %>
+<% if(ability_level < 1) { %>
+<div class="ul_li">
+  <div class="block_div_shop"><span class="span_block_text">Уровень 1</span>
+    <span class="span_block_text1"><%= ability_message_low %> <%= ability.levels_proc[1] %><%= proc_s %></span><br>
+    <span class="span_shop_text">Цена в золотых слитках: <%= ability.price_gold_bars[0] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+    <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+    <input type="hidden" name="value_money" value="gold_bars">
+    <input type="hidden" name="number_abilities" value="0">
+    <button type="submit" class="button_buy">[Купить]</button>
+    </form><br>
+    <span class="span_shop_text">Цена в очках рейтинга: <%= ability.price_point_rating[0] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+      <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+      <input type="hidden" name="value_money" value="point_rating">
+      <input type="hidden" name="number_abilities" value="0">
+      <button type="submit" class="button_buy">[Купить]</button>
+  </form></div>
+</div>
+<% } %>
+<% if(ability_level < 2) { %>
+<div class="ul_li">
+  <div class="block_div_shop"><span class="span_block_text">Уровень 2</span>
+    <span class="span_block_text1"><%= ability_message_low %> <%= ability.levels_proc[2] %><%= proc_s %></span><br>
+    <span class="span_shop_text">Цена в золотых слитках: <%= ability.price_gold_bars[1] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+    <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+    <input type="hidden" name="value_money" value="gold_bars">
+    <input type="hidden" name="number_abilities" value="1">
+    <button type="submit" class="button_buy">[Купить]</button>
+    </form><br>
+    <span class="span_shop_text">Цена в очках рейтинга: <%= ability.price_point_rating[1] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+      <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+      <input type="hidden" name="value_money" value="point_rating">
+      <input type="hidden" name="number_abilities" value="1">
+      <button type="submit" class="button_buy">[Купить]</button>
+  </form></div>
+</div>
+<% } %>
+<% if(ability_level < 3) { %>
+<div class="ul_li">
+  <div class="block_div_shop"><span class="span_block_text">Уровень 3</span>
+    <span class="span_block_text1"><%= ability_message_low %> <%= ability.levels_proc[3] %><%= proc_s %></span><br>
+    <span class="span_shop_text">Цена в золотых слитках: <%= ability.price_gold_bars[2] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+    <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+    <input type="hidden" name="value_money" value="gold_bars">
+    <input type="hidden" name="number_abilities" value="2">
+    <button type="submit" class="button_buy">[Купить]</button>
+    </form><br>
+    <span class="span_shop_text">Цена в очках рейтинга: <%= ability.price_point_rating[2] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+      <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+      <input type="hidden" name="value_money" value="point_rating">
+      <input type="hidden" name="number_abilities" value="2">
+      <button type="submit" class="button_buy">[Купить]</button>
+  </form></div>
+</div>
+<% } %>
+<% if(ability_level < 4) { %>
+<div class="ul_li">
+  <div class="block_div_shop"><span class="span_block_text">Уровень 4</span>
+    <span class="span_block_text1"><%= ability_message_low %> <%= ability.levels_proc[4] %><%= proc_s %></span><br>
+    <span class="span_shop_text">Цена в золотых слитках: <%= ability.price_gold_bars[3] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+    <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+    <input type="hidden" name="value_money" value="gold_bars">
+    <input type="hidden" name="number_abilities" value="3">
+    <button type="submit" class="button_buy">[Купить]</button>
+    </form><br>
+    <span class="span_shop_text">Цена в очках рейтинга: <%= ability.price_point_rating[3] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+      <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+      <input type="hidden" name="value_money" value="point_rating">
+      <input type="hidden" name="number_abilities" value="3">
+      <button type="submit" class="button_buy">[Купить]</button>
+  </form></div>
+</div>
+<% } %>
+<% if(ability_level < 5) { %>
+<div class="ul_li">
+  <div class="block_div_shop"><span class="span_block_text">Уровень 5</span>
+    <span class="span_block_text1"><%= ability_message_low %> <%= ability.levels_proc[5] %><%= proc_s %></span><br>
+    <span class="span_shop_text">Цена в золотых слитках: <%= ability.price_gold_bars[4] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+    <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+    <input type="hidden" name="value_money" value="gold_bars">
+    <input type="hidden" name="number_abilities" value="4">
+    <button type="submit" class="button_buy">[Купить]</button>
+    </form><br>
+    <span class="span_shop_text">Цена в очках рейтинга: <%= ability.price_point_rating[4] %></span>
+    <form class="form" action="/college/abilities/confirmation" method="get">
+      <input type="hidden" name="value_abilities" value="<%= value_abilities %>">
+      <input type="hidden" name="value_money" value="point_rating">
+      <input type="hidden" name="number_abilities" value="4">
+      <button type="submit" class="button_buy">[Купить]</button>
+  </form></div>
+</div>
+<% } %>
+<ul class="list_a">
+  <li><a href="/college"><div class="body_div">
+    <span class="body_span"><img src="/images/city/akademia.png"></span>Мореходный колледж</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

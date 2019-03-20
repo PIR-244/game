@@ -1,0 +1,31 @@
+h3 {
+  padding: 3px 4.2% 5px 4.2%;
+  color: #302314;
+  text-align: center;
+}
+p{
+  padding: 0px 4.2% 4px 4.2%;
+font-size: 16px;
+color: #946012;
+font-weight: 510;
+text-align: center;
+}
+#span_text{
+  text-align: center;
+  font-size: 15px;
+padding: 3px 4.2% 5px 4.2%;
+color: #302314;
+font-weight: normal;
+display: block;
+}
+.span_a {
+  text-align: center;
+  margin-bottom: 7px;
+}
+#span_a img {
+  width: 19px;
+}
+
+.a_hover:hover{
+  color: #946012;
+}

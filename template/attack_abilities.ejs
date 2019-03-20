@@ -1,0 +1,73 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/college_abilities.css">
+<h3>Атакующие способности</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/perezaryadka.jpg" alt="#">
+  <p><strong>Быстрая перезарядка</strong><br>Время перезарядки орудий уменьшается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="fast_recharge">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/Korpus.jpg" alt="#">
+  <p><strong>Увеличенные повреждения корпусу</strong><br>Урон по корпусу вражесского корабля увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="damage_hull">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/parus.jpg" alt="#">
+  <p><strong>Увеличенные повреждения парусам</strong><br>Урон по парусам вражесского корабля увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="damage_sails">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/komanda.jpg" alt="#">
+  <p><strong>Увеличенные повреждения команде</strong><br>Урон по команде вражесского корабля увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="damage_team">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/krit.jpg" alt="#">
+  <p><strong>Критический выстрел</strong><br>Шанс нанести критический выстрел увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="critical_shot">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/abordazh.jpg" alt="#">
+  <p><strong>Мастерский абордаж</strong><br>Эффективность вашей команды в ближнем бою увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="masters_boarding">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/zalp.jpg" alt="#">
+  <p><strong>Мушкетный залп</strong><br>Перед абордажем производится мушкетный залп, который наносит повреждения
+                              команде противника, но не более чем число стреляющих!</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="musket_volley">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+
+<ul class="list_a">
+  <li><a href="/college"><div class="body_div">
+    <span class="body_span"><img src="/images/city/akademia.png"></span>Мореходный колледж</div></a></li>
+</ul>

@@ -1,0 +1,262 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+::-moz-selection{background: #fff; color: black;}
+::webkit-selection{background: #fff; color: black;}
+::selection{background: #fff; color: black;}
+body {
+  background: #302314;
+  margin: auto;
+  max-width: 480px;
+}
+li{
+    list-style-type: none;
+}
+#content{
+    background: white;
+  background-image: url(/images/17.jpg);
+  background-repeat: repeat-y;
+  background-size: 100% 40px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+   color: black;
+
+}
+.container{
+
+}
+@media screen and (max-width: 480px) {
+        body {  width: 100%; }
+        #content {  width: 100%; }
+
+    }
+#shapka_block{
+  height: 40px;
+  width: 184px;
+    margin: auto;
+}
+#shapka{
+    height: 40px;
+    margin: auto;
+    background-image: url(/images/22.png);
+    background-repeat: no-repeat;
+    background-size: 184px 40px;
+
+}
+#shapka:hover{
+  background-image: url(/images/nazhat.png);
+  background-repeat: no-repeat;
+}
+#warning_verh{
+  background-image: url(/images/verkhsvit.png);
+  background-size: 100% 17px;
+}
+#warning{
+  background-image: url(/images/tsentrsvit.png);
+  background-size: 100% 2px;
+  font-size: 14px;
+  margin: auto;
+  color: #563711;
+  padding: 0 14.4% 0 14.4%;
+}
+#training_message{
+  padding-bottom: 4px;
+}
+#training_mess_a {
+  margin-left: 3px;
+  color: #302314;
+  font-size: 13px;
+}
+#training_mess_a:hover{
+ color: #946012;
+}
+#promo_message{
+  padding-top: 2px;
+}
+.promo_mess_a {
+  margin-left: 3px;
+  color: #302314;
+  font-size: 13px;
+}
+.promo_mess_a:hover{
+ color: #946012;
+}
+#plavanie_mess_a {
+  margin-left: 3px;
+  color: #302314;
+  font-size: 13px;
+}
+#plavanie_mess_a:hover{
+ color: #946012;
+}
+#warning_niz{
+  background-image: url(/images/nizsvit.png);
+  background-size: 100% 13px;
+}
+#naviverkh_verh{
+  background-image: url(/images/naviverkh.png);
+  background-size: 100% 24px;
+  height: 24px;
+}
+#hiNavigation{
+    background-image: url(/images/navitsentr.png);
+    background-size: 100% auto;
+    font-size: 12px;
+    padding: 0 10.4% 0 9.4%;
+    text-align: center;
+
+}
+#hiNavigation a:hover {
+     /* Цвет ссылки при наведении на нее курсора мыши */
+    color: #946012;
+     }
+#naviverkh_niz{
+  background-image: url(/images/naviniz.png);
+  background-size: 100% 27px;
+  height: 27px;
+}
+.hi_span{
+  position: relative;
+  height: 16px;
+  width: 16px;
+  top: 3px;
+  font-size: 10px;
+  font-style: italic;
+}
+#hi_span_pochta2{
+  position: relative;
+  top: 1px;
+}
+#hi_span_korpus{
+  position: relative;
+  top: 3px;
+}
+#hi_span_parus{
+  position: relative;
+  height: 16px;
+  width: 16px;
+  top: 3px;
+  font-size: 10px;
+  font-style: italic;
+  margin-right: 1px;
+}
+#hi_span_team{
+  position: relative;
+  height: 16px;
+  width: 16px;
+  top: 3px;
+  font-size: 10px;
+  font-style: italic;
+  margin-right: 2px;
+}
+#body{
+   font-size: 16px;
+   padding: 5px 6.3% 0 6.3%;
+}
+#body ul.list_a li {
+  background-image: url(/images/8.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+}
+.body_div{
+  height: 20px;
+  padding: 4px 3.6% 8px 3.6%;
+}
+.body_div:hover{
+background: #cfa970;
+}
+#text a:hover{
+  color: #946012;
+}
+#downNavigation{
+  background-image: url(/images/4.png);
+  background-repeat: no-repeat;
+ background-position: top;
+ background-size: 87.5% auto;
+ padding: 6.2% 6.2% 0 6.2%;
+    font-size: 16px;
+
+}
+#downNavigation ul li{
+padding: 0 15px 0px 15px;
+
+}
+.down_span{
+  position: relative;
+  margin-right: 2px;
+  top: 2px;
+}
+.down_span2{
+  position: relative;
+  margin-right: 2px;
+  top: 3px;
+}
+.down_span img{
+  width: 18px;
+}
+.down_span2 img{
+  width: 18px;
+}
+.down_span3{
+  position: relative;
+  margin-right: 2px;
+  top: 2px;
+}
+.down_span3 img{
+  height: 20px;
+}
+a {
+    text-decoration: none;
+    color: #563711;
+}
+#downNavigation ul li a:hover {
+     /* Цвет ссылки при наведении на нее курсора мыши */
+    color: #946012;
+     }
+
+#promlogoutNavigation{
+  height: 27px;
+  background-image: url(/images/9.png);
+  background-repeat: no-repeat;
+  background-size: 100% 27px;
+}
+#logoutNavigation {
+ padding: 10px 0 5px 0;
+ background-image: url(/images/7.png);
+ background-size: 100% 2px;
+
+}
+#logoutNavigation ul li{
+    text-align: center;
+    width: 32.5%;
+    display: inline-block;
+}
+
+#logoutNavigation ul li a{
+color: #7a6443;
+}
+#logoutNavigation ul li a:hover{
+color: #cfa970;
+}
+#prava{
+ position: relative;
+  color: #7a6443;
+  top: 10px;
+  height: 28px;
+  text-align: center;
+  font-size: 12px;
+}
+#prava_noregan{
+  padding: 15px 0 5px 0;
+  background-image: url(/images/7.png);
+  background-size: 100% 2px;
+  height: 20px;
+  color: #7a6443;
+  text-align: center;
+  font-size: 12px;
+}
+
+img{
+max-width: 100%;
+height: auto;
+}

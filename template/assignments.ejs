@@ -1,0 +1,169 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/assignments.css">
+<h3>Задания</h3>
+<p id="vsio_p"></p>
+<ul class="list_a">
+  <li><div id="shop_div"><p id="shop_p"><strong>Доставить груз</strong><br>
+    Описание: Перевезти товар "<%=name_products%>" в количестве <%=number_products%> штук <%=user.assignments.shop.name_port%>.<br>
+    Награда: 20% от груза и 1 рейтинг</p>
+  <form class="form-horizontal login-form" name="shop">
+        <input type="hidden" name="value" class="btn-primary" value="shop"></button>
+        <button type="submit"  class="btn" id="shop">.</button>
+        <div class="help-block error"></div>
+  </form></div>
+  </li>
+  <li><div id="tavern_div"><p id="tavern_p"><strong>Попутчик</strong><br>
+    Описание: Доставьте важную персону <%=user.assignments.tavern.name_port%> в целости и невредимости.<br>
+    Награда: <%=user.assignments.tavern.reward%> песо и 1 рейтинг</p>
+    <form class="form-horizontal login-form" name="tavern">
+          <input type="hidden" name="value" class="btn-primary" value="tavern"></button>
+          <button type="submit"  class="btn" id="tavern">.</button>
+          <div class="help-block error"></div>
+    </form></div>
+  </li>
+  <li><div id="residence_div"><p id="residence_p"><strong>Охотник за головами</strong><br>
+    Описание: В окрестных водах промышляет грабежами капитан <%=user.assignments.residence.name_pirates%> на своей посудине. Найдите его и отправьте на корм рыбам.<br>
+    Награда: <%=user.assignments.residence.reward%> золотых слитка и 2 рейтинга</p>
+    <form class="form-horizontal login-form" name="residence">
+          <input type="hidden" name="value" class="btn-primary" value="residence"></button>
+          <button type="submit"  class="btn" id="residence">.</button>
+          <div class="help-block error"></div>
+    </form></div>
+  </li>
+  <li><a href="/plavanie"><div class="body_div">
+    <span class="body_span3"><img src="/images/frontpage/plavanie2.png"></span>Плавание</div></a></li>
+</ul>
+
+<script type="text/javascript">
+  if(<%=user.assignments.shop.activity%> == 1 || <%=user.assignments.shop.activity%> == 4) {
+    document.getElementById('shop').style.width = '111px';
+    document.getElementById('shop').style.height = '28px';
+    document.getElementById('shop').style.backgroundImage = 'url(/images/otkazKNP.jpg)';
+    document.getElementById('shop').style.backgroundSize = '111px 28px'; }
+    if(<%=user.assignments.tavern.activity%> == 1 || <%=user.assignments.tavern.activity%> == 4) {
+      document.getElementById('tavern').style.width = '111px';
+      document.getElementById('tavern').style.height = '28px';
+      document.getElementById('tavern').style.backgroundImage = 'url(/images/otkazKNP.jpg)';
+      document.getElementById('tavern').style.backgroundSize = '111px 28px'; }
+      if(<%=user.assignments.residence.activity%> == 1 || <%=user.assignments.residence.activity%> == 4) {
+        document.getElementById('residence').style.width = '111px';
+        document.getElementById('residence').style.height = '28px';
+        document.getElementById('residence').style.backgroundImage = 'url(/images/otkazKNP.jpg)';
+        document.getElementById('residence').style.backgroundSize = '111px 28px'; }
+        var vsio = 0;
+if(<%=user.assignments.shop.activity%> == 2 || <%=user.assignments.shop.activity%> >= 5) {
+  document.getElementById('shop_div').style.width = '0px';
+  document.getElementById('shop_div').style.height = '0px';
+  document.getElementById('shop_p').innerHTML = '';
+  document.getElementById('shop').style.backgroundSize = '0px 0px';
+  vsio++;
+}
+if(<%=user.assignments.tavern.activity%> == 2 || <%=user.assignments.tavern.activity%> >= 5) {
+  document.getElementById('tavern_div').style.width = '0px';
+  document.getElementById('tavern_div').style.height = '0px';
+  document.getElementById('tavern_p').innerHTML = '';
+  document.getElementById('tavern').style.backgroundSize = '0px 0px';
+  vsio++;
+}
+if(<%=user.assignments.residence.activity%> == 2 || <%=user.assignments.residence.activity%> >= 5) {
+  document.getElementById('residence_div').style.width = '0px';
+  document.getElementById('residence_div').style.height = '0px';
+  document.getElementById('residence_p').innerHTML = '';
+  document.getElementById('residence').style.backgroundSize = '0px 0px';
+  vsio++;
+}
+if (vsio == 3) {
+  document.getElementById('vsio_p').innerHTML = 'На сегодня заданий больше нет. Приходи завтра!';
+}
+</script>
+
+<script>
+
+var url_button = "/assignments";
+
+  $(document.forms['shop']).on('submit', function() {
+    var form = $(this);
+
+    $('.error', form).html('');
+    $(":submit", form).button("loading");
+
+    $.ajax({
+      url: url_button,
+      method: "POST",
+      data: form.serialize(),
+      complete: function() {
+       $(":submit", form).button("reset");
+      },
+      statusCode: {
+        200: function() {
+          window.location.href = "/assignments";
+        },
+        300: function() {
+          window.location.href = "/assignments/confirmation";
+        },
+        403: function(jqXHR) {
+          var error = JSON.parse(jqXHR.responseText);
+          $('.error', form).html(error.message);
+        }
+      }
+    });
+   return false;
+  });
+  $(document.forms['tavern']).on('submit', function() {
+    var form = $(this);
+
+    $('.error', form).html('');
+    $(":submit", form).button("loading");
+
+    $.ajax({
+      url: "/assignments",
+      method: "POST",
+      data: form.serialize(),
+      complete: function() {
+       $(":submit", form).button("reset");
+      },
+      statusCode: {
+        200: function() {
+          window.location.href = "/assignments";
+        },
+        300: function() {
+          window.location.href = "/assignments/confirmation";
+        },
+        403: function(jqXHR) {
+          var error = JSON.parse(jqXHR.responseText);
+          $('.error', form).html(error.message);
+        }
+      }
+    });
+   return false;
+  });
+  $(document.forms['residence']).on('submit', function() {
+    var form = $(this);
+
+    $('.error', form).html('');
+    $(":submit", form).button("loading");
+
+    $.ajax({
+      url: "/assignments",
+      method: "POST",
+      data: form.serialize(),
+      complete: function() {
+       $(":submit", form).button("reset");
+      },
+      statusCode: {
+        200: function() {
+          window.location.href = "/assignments";
+        },
+        300: function() {
+          window.location.href = "/assignments/confirmation";
+        },
+        403: function(jqXHR) {
+          var error = JSON.parse(jqXHR.responseText);
+          $('.error', form).html(error.message);
+        }
+      }
+    });
+   return false;
+  });
+</script>

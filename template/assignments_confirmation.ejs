@@ -1,0 +1,30 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы дейтсвительно хотите отказаться от задания?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="/assignments"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go() {
+
+    $.ajax({
+      url: '/assignments/confirmation',
+      method: "POST",
+      data: {value: 'yes'},
+      statusCode: {
+        200: function() {
+          window.location.href = "/assignments";
+        }
+      }
+    });
+   return false;
+}
+
+</script>

@@ -1,0 +1,59 @@
+h3 {
+  text-align:center;
+  padding: 0 4.2% 13px 4.2%;
+  color: #302314;
+}
+p{
+  background-image: url(/images/8.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 0 4px 4.2%;
+  font-size: 16px;
+  margin-top: 3px;
+  color: #302314;
+}
+.span_text{
+  color: #302314;
+}
+.time_div {
+  font-size: 14px;
+    color: #946012;
+}
+#button_page{
+
+  padding: 14px 0 10px 0;
+  text-align: center;
+}
+.button_page{
+
+  display: inline-block;
+  margin: auto;
+  background: #d2b777;
+  font-size: 18px;
+  height: 21px;
+  width: 22px;
+  margin: 0px 2px;
+}
+.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    background: #a97b4e; /* цвет текста для нективной ссылки */
+    display: inline-block;
+    margin: auto;
+    font-size: 18px;
+    height: 21px;
+    width: 22px;
+    margin: 0px 2px;
+}
+.out_no{
+  display: inline-block;
+  margin: auto;
+  background: transparent;
+  font-size: 0px;
+  height: 0px;
+  width: 0px;
+  margin: 0px 2px;
+}
+.a_hover:hover{
+  color: #946012;
+}

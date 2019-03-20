@@ -1,0 +1,206 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/plavanie/departure.css">
+<link rel="stylesheet" href="/css/plavanie/logWar.css">
+  <h3>Сражение</h3>
+  <table id="plavanie_table">
+    <tbody>
+      <tr>
+        <td class="info_plavanie"><p><a class="a_hover" href="/user/info?user=<%= user.username %>"><%= user.username %></a></td>
+        <td class="info_image"></td>
+        <td class="info_plavanie"><p><span id="zaglav_p"></span></p></td>
+      </tr>
+      <tr>
+        <td class="info_plavanie"><img class="img_shop1" src="/images/avatarky/<%= user.avatar_index %>_mini.jpg" alt=""></td>
+        <td class="info_image"></td>
+        <td class="info_plavanie"><img class="img_shop1" src="/images/avatarky/<%= enemy_avatar %>_mini.jpg" alt=""></td>
+      </tr>
+      <tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.hull %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/korpus.png" alt="Корпус"></td>
+        <td class="info_plavanie"><%= hull_enemy %></td>
+      </tr>
+      <tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.sails %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/parusa.png" alt="Паруса"></td>
+        <td class="info_plavanie"><%= sails_enemy %></td>
+      </tr><tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.team.sailors+user.ship.team.boarders+user.ship.team.gunners %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/matrosy.png" alt="Команда"></td>
+        <td class="info_plavanie"><%= team_enemy %></td>
+      </tr><tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.speed %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/skorost.png" alt="Скорость"></td>
+        <td class="info_plavanie"><%= speed_enemy %></td>
+      </tr><tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.mobility %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/manevrennost.png" alt="Маневренность">
+        <td class="info_plavanie"><%= mobility_enemy %></td>
+      </tr>
+    </tbody>
+  </table>
+  <span id="span_text"></span><div class="span_a">
+    <a href="/plavanie/battle" id="span_a"><img src="/images/plavanie/obnovit.png" title="Обновить"></a>
+  </div>
+
+<ul class="list_a">
+  <li><form class="form" action="/plavanie/battle" method="post">
+    <input type="hidden" name="away" value="0">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span"><img src="/images/plavanie/vernutsyavsrazh.png"></span>Вернуться в сражение</div></button>
+  <li><a href="/user/abilities"><div class="body_div">
+    <span class="body_span2"><img src="/images/user/sposobnosti.png"></span>Способности</div></a></li>
+</ul>
+
+<div id="log_war">
+  <div class="div_zagolovok">Лог</div>
+</div>
+<script type="text/javascript">
+  var logWars = <%- JSON.stringify(logWars) %>;
+  var username = <%- JSON.stringify(user.username) %>;
+
+    var log_war = document.getElementById('log_war');
+  if (logWars[0].sender == username || logWars[0].recipient == username ) {
+    var last_action_user = <%- JSON.stringify(user.last_action) %>;
+    var enemy_name = <%- JSON.stringify(enemy_name) %>;
+    for (var i = 0; i < logWars.length; i++) {
+      var div = document.createElement('div');
+      log_war.appendChild(div);
+      div.classList.add('list_logWar');
+      var date_now = new Date(last_action_user);
+      var date_logWar = new Date(logWars[i].created);
+      date_now = Math.floor((date_now.getTime() - date_logWar.getTime())*0.001);
+      var time_mes = ' сек.';
+      if (date_now>60) {
+        date_now = Math.floor(date_now/60);
+        time_mes = ' мин.';
+      }
+      time_mes = date_now + time_mes;
+
+      if (logWars[i].value_war == 0) { // zalp
+        var charge_message = '';
+        if (logWars[i].charge == 0) {
+          charge_message = 'ядрами';
+        } else if (logWars[i].charge == 1) {
+          charge_message = 'картечью';
+        } else if (logWars[i].charge == 2) {
+          charge_message = 'книппелями';
+        } else {
+          charge_message = 'бомбами';
+        }
+        var krit_true = '';
+        if (logWars[i].krit_true == 1) {
+          krit_true = ' (крит. попадание)'
+        }
+        var delete_guns = '';
+        if (logWars[i].sender == username) {
+          if (logWars[i].damage_two > 0) {
+            var mess_deleteGuns = ' орудие';
+            if (logWars[i].damage_two > 1) {
+              mess_deleteGuns = ' орудия';
+            }
+            delete_guns = ' Повреждено '+logWars[i].damage_two+mess_deleteGuns;
+          }
+          div.innerHTML = 'Капитан '+logWars[i].sender+' дал залп '+charge_message+' и нанес '+
+                        logWars[i].damage_one+' урона'+krit_true+'.'+delete_guns+
+                        '<div class="time_mes">'+time_mes+'</div>';
+        } else {
+          if (logWars[i].team_res > 0) {
+            delete_guns = ' Вылечено команды: '+logWars[i].team_res;
+          }
+          div.innerHTML = 'Капитан '+enemy_name+' дал залп '+charge_message+' и нанес '+
+                        logWars[i].damage_one+' урона'+krit_true+'.'+delete_guns+
+                        '<div class="time_mes">'+time_mes+'</div>';
+        }
+      }
+      else if (logWars[i].value_war == 1) { // board
+
+        if (logWars[i].sender == username) {
+          var team_res = '';
+          if (logWars[i].team_res > 0) {
+            team_res = ' Вылечено команды: '+logWars[i].team_res;
+          }
+          div.innerHTML = 'Ваша команда нанесла '+ logWars[i].damage_one+' урона и выиграла абордаж.'+
+                        ' Команда противника нанесла '+ logWars[i].damage_two+' урона.'+
+                        team_res+'<div class="time_mes">'+time_mes+'</div>';
+        } else {
+          div.innerHTML = 'Ваша команда нанесла '+ logWars[i].damage_two+' урона.'+
+                        ' Команда противника нанесла '+ logWars[i].damage_one+
+                        ' урона и выиграла абордаж.'+'<div class="time_mes">'+time_mes+'</div>';
+        }
+      }
+      else if (logWars[i].value_war == 2) { // away
+        if (logWars[i].sender == username) {
+          div.innerHTML = 'Капитан '+logWars[i].sender+' уплыл. Сражение закончено.'+
+                        '<div class="time_mes">'+time_mes+'</div>';
+        } else {
+          div.innerHTML = 'Капитан '+enemy_name+' уплыл. Сражение закончено.'+
+                        '<div class="time_mes">'+time_mes+'</div>';
+        }
+      }
+      else if (logWars[i].value_war == 3) { // ничья
+
+        div.innerHTML = 'Оба капитана решили отступить. Сражение закончено.'+
+                      '<div class="time_mes">'+time_mes+'</div>';
+      }
+      else if (logWars[i].value_war == 4) { // мушкетный залп
+        if (logWars[i].sender == username) {
+          var damage_one = '';
+          if (logWars[i].damage_two > 0) {
+            damage_one = ' Твои потери: '+ logWars[i].damage_two+' чел.';
+          }
+          var damage_two = '';
+          if (logWars[i].damage_one > 0) {
+            damage_two = ' Вражеские потери: '+ logWars[i].damage_one+' чел.';
+          }
+          div.innerHTML = 'Мушкетный залп.'+damage_one+damage_two+
+                        '<div class="time_mes">'+time_mes+'</div>';
+        } else {
+          var damage_one = '';
+          if (logWars[i].damage_one > 0) {
+            damage_one = ' Твои потери: '+ logWars[i].damage_one+' чел.';
+          }
+          var damage_two = '';
+          if (logWars[i].damage_two > 0) {
+            damage_two = ' Вражеские потери: '+ logWars[i].damage_two+' чел.';
+          }
+          div.innerHTML = 'Мушкетный залп.'+damage_one+damage_two+
+                        '<div class="time_mes">'+time_mes+'</div>';
+        }
+      }
+      else /*if (logWars[i].value_war == 5)*/ { // start
+
+        div.innerHTML = 'Сражение началось!'+
+                      '<div class="time_mes">'+time_mes+'</div>';
+      }
+
+    }
+  }
+</script>
+
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+  var enemy_name = <%- JSON.stringify(enemy_name) %>;
+  var user_war = <%- JSON.stringify(user.war.user_war) %>;
+  if (user_war == 'bot') {
+    document.getElementById('zaglav_p').innerHTML = enemy_name;
+  } else {
+    document.getElementById('zaglav_p').innerHTML = '<a class="a_hover" href="/user/info?user='+enemy_name+'">'+enemy_name+'</a>';
+  }
+</script>
+<script type="text/javascript">
+var last_action = <%- JSON.stringify(user.war.last_action) %>;
+var date_now = <%- JSON.stringify(user.last_action) %>;
+var waiting = <%- JSON.stringify(user.war.waiting) %>;
+var last_action = new Date(last_action);
+var date_now = new Date(date_now);
+date_now = Math.floor((-date_now.getTime() + last_action.getTime())*0.001 + waiting);
+if (date_now < 0) {
+  date_now = 0;
+}
+  document.getElementById('span_text').innerHTML = 'Ты уплываешь от противника.<br> Осталось '+date_now+' сек.';
+</script>

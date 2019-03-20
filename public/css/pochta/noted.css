@@ -1,0 +1,117 @@
+ul li div a:hover{
+  color: #946012;
+}
+h3 {
+  text-align:center;
+  padding: 0 4.2% 5px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 13px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  padding-left: 4.2%;
+  text-align: center;
+  margin-bottom: 15px;
+  color: #302314;
+}
+#noted{
+  color: #946012;
+}
+#last{
+  color: #563711;
+}
+#last:hover{
+  color: #946012;
+}
+#noteds_undefined{
+  font-size: 14px;
+  color: #302314;
+  text-align: center;
+}
+.pol_tuskl li{
+  background-image: url(/images/poloskatuskl.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+}
+ul li div a{
+  margin-top: 8px;
+  display: inline-block;
+  margin-right: 15px;
+}
+.body_div1{
+  margin: 4px 3.6% 8px 3.6%;
+}
+.div_button_center{
+  text-align: center;
+}
+.form{
+    display: inline-block;
+    margin-right: 10px;
+}
+.button_buy{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/napisatKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ margin-top: 3px;
+}
+.button_delete{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/udalitKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ margin-top: 3px;
+}
+#button_page{
+
+  padding: 14px 0 10px 0;
+  text-align: center;
+}
+.button_page{
+
+  display: inline-block;
+  margin: auto;
+  background: #d2b777;
+  font-size: 18px;
+  height: 21px;
+  width: 22px;
+  margin: 0px 2px;
+}
+.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    background: #a97b4e; /* цвет текста для нективной ссылки */
+    display: inline-block;
+    margin: auto;
+    font-size: 18px;
+    height: 21px;
+    width: 22px;
+    margin: 0px 2px;
+}
+.out_no{
+  display: inline-block;
+  margin: auto;
+  background: transparent;
+  font-size: 0px;
+  height: 0px;
+  width: 0px;
+  margin: 0px 2px;
+}
+
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}

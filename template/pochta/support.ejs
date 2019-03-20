@@ -1,0 +1,65 @@
+
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/pochta/support.css">
+  <h3>Поддержка</h3>
+  <div class="block_div_shop">
+    <strong class="strong_support">Введите ваш вопрос:</strong>
+  <form class="form" action="/pochta/support" method="post">
+    <input type="text" maxlength="250" class="input" name="message">
+    <button type="submit" class="button_buy">О</button>
+  </form></div>
+
+<div id="letters_ul">
+</div>
+
+<ul class="list_a">
+<li><a href="/pochta/last"><div class="body_div">
+  <span class="body_span2"><img src="/images/navi_verch/pochta1.png"></span>Почта</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var letters = <%- JSON.stringify(letters) %>;
+
+
+var letters_ul = document.getElementById('letters_ul');
+if (letters[0] != 0) {
+  letters_ul.style.marginBottom = '7px';
+  var last_action_user = <%- JSON.stringify(user.last_action) %>;
+  for (var i = 0; i < letters.length; i++) {
+    var p = document.createElement('p');
+    letters_ul.appendChild(p);
+
+    var date_message = new Date(letters[i].created);
+    var date_now = new Date(last_action_user);
+    if (date_now < date_message) {
+      date_now = date_message;
+    }
+    date_now = Math.floor((date_now.getTime() - date_message.getTime())*0.001);
+    var time_mes = 'сек.'
+    if (date_now>60) {
+      date_now = Math.floor(date_now/60);
+      time_mes = 'мин.'
+      if (date_now>60) {
+        date_now = Math.floor(date_now/60);
+        time_mes = 'ч.'
+        if (date_now>24) {
+          date_now = Math.floor(date_now/24);
+          time_mes = 'д.'
+        }
+      }
+    }
+    var username = letters[i].sender;
+
+    p.innerHTML = '<a href="/user/info?user='+username+'">'
+                  +username+':</a> <span class="span_text">'+letters[i].message+
+                  '</span><span class="span_time">'+date_now+time_mes+'</span>';
+  }
+}
+</script>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

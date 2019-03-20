@@ -1,0 +1,21 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/settings.css">
+  <h3>Настройки</h3>
+    <div class="div_zagolovok">Смена пароля</div>
+  <div class="block_div_shop">
+  <form class="form" action="/user/settings" method="post">
+    <p>Введите старый пароль:</p>
+    <input type="text" maxlength="16" class="input" name="old">
+    <p>Введите новый пароль:</p>
+    <input type="text" maxlength="16" class="input" name="new_par">
+    <p>Повторите новый пароль:</p>
+    <input type="text" maxlength="16" class="input" name="povtor_new_par"><br>
+    <button type="submit" class="button_buy">О</button>
+  </form></div>
+  <script type="text/javascript">
+  var err_message_low= <%- JSON.stringify(err_message_low) %>;
+    if (err_message_low.length>0) {
+      document.getElementById('err_message_low').innerHTML = err_message_low;
+    }
+  </script>

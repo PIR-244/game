@@ -1,0 +1,87 @@
+
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/pochta/last.css">
+  <h3>Почта</h3>
+  <p><span id="last">Последние</span> | <a href="/pochta/noted"><span id="noted">Отмеченные</span></a></p>
+  <div id="letters_undefined"></div>
+<ul id="letters_ul" class="pol_tuskl">
+</ul>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/pochta/last?page=1">1</a>
+    <a class="button_page" id="button_page2" href="/pochta/last?page=2">2</a>
+    <a class="button_page" id="button_page3" href="/pochta/last?page=3">3</a>
+</div>
+
+
+<script type="text/javascript">
+var page = <%- JSON.stringify(page) %>;
+if (page==2) {
+  document.getElementById('button_page2').classList.add('disabled');
+} else if (page==3) {
+  document.getElementById('button_page3').classList.add('disabled');
+} else {
+  document.getElementById('button_page1').classList.add('disabled');
+}
+var letters = <%- JSON.stringify(letters) %>;
+var letters_list = <%- JSON.stringify(letters_list) %>;
+if (letters_list <= 20) {
+  document.getElementById('button_page3').classList.add('out_no');
+}
+if (letters_list <= 10) {
+  document.getElementById('button_page2').classList.add('out_no');
+  document.getElementById('button_page1').classList.add('out_no');
+  document.getElementById('button_page').style.width = '0px';
+  document.getElementById('button_page').style.height = '0px';
+  document.getElementById('button_page').style.padding = '0px';
+}
+
+var letters_ul = document.getElementById('letters_ul');
+if (letters[0] != 0) {
+var last_action_user = <%- JSON.stringify(user.last_action) %>;
+  for (var i = 0; i < letters.length; i++) {
+    var li = document.createElement('li');
+    letters_ul.appendChild(li);
+    var username = <%- JSON.stringify(user.username) %>;
+    if (letters[i].sender != username) {
+      username = letters[i].sender;
+    } else {
+      username = letters[i].recipient;
+    }
+    var date_message = new Date(letters[i].created);
+    var date_now = new Date(last_action_user);
+    date_now = Math.floor((date_now.getTime() - date_message.getTime())*0.001);
+    var time_mes = 'сек'
+    if (date_now>60) {
+      date_now = Math.floor(date_now/60);
+      time_mes = 'мин'
+      if (date_now>60) {
+        date_now = Math.floor(date_now/60);
+        time_mes = 'ч'
+        if (date_now>24) {
+          date_now = Math.floor(date_now/24);
+          time_mes = 'д'
+        }
+      }
+    }
+    var button_buy = 'button_buy';
+    if (letters[i].new_activ == 1 && letters[i].sender == username) {
+      var button_buy = 'button_buy1';
+    }
+    li.innerHTML = '<div class="body_div1"><a href="/user/info?user='+username+'">'+username+
+                  '</a><span class="span_text">'+letters[i].sender+
+                  '<span class="span_time">('+date_now+time_mes+')</span>'+
+                  ': '+letters[i].message+'</span><div>'+
+                  '<form class="form" action="/pochta" method="get">'+
+                  '<input type="hidden" name="user" value="'+username+'">'+
+                  '<button type="submit" class="'+button_buy+'">П</button></form></div></div>';
+
+  }
+} else {
+  var letters_undefined = document.getElementById('letters_undefined');
+  letters_undefined.innerHTML = 'У вас нет сообщений!';
+  letters_undefined.style.paddingBottom = '13px';
+}
+
+</script>

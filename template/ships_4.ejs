@@ -1,0 +1,76 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/ships.css">
+<h3>Корабли 4-го ранга</h3>
+<p class="img_shop"><img src="/images/verf/4rang_hi.jpg" alt="."></p>
+<div class="ul_li">
+  <p><strong><%= ship[7].name %></strong><br>
+     Корпус: <%= ship[7].hull %><br>
+   Паруса: <%= ship[7].sails %><br>
+    Трюм: <%= ship[7].hold %><br>
+    Скорость: <%= ship[7].speed %><br>
+    Маневренность: <%= ship[7].mobility %><br>
+    Команда: <%= ship[7].team %><br>
+    Орудия(количество): <%= ship[7].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[7].guns.funt_guns %><br>
+    Требование: Уровень навигации <%= ship[7].navigation %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[7].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="7">
+      <button type="submit" class="button_buy" id="7">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><strong><%= ship[8].name %></strong><br>
+     Корпус: <%= ship[8].hull %><br>
+   Паруса: <%= ship[8].sails %><br>
+    Трюм: <%= ship[8].hold %><br>
+    Скорость: <%= ship[8].speed %><br>
+    Маневренность: <%= ship[8].mobility %><br>
+    Команда: <%= ship[8].team %><br>
+    Орудия(количество): <%= ship[8].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[8].guns.funt_guns %><br>
+    Требование: Уровень навигации <%= ship[8].navigation %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[8].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="8">
+      <button type="submit" class="button_buy" id="8">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><strong><%= ship[9].name %></strong><br>
+     Корпус: <%= ship[9].hull %><br>
+   Паруса: <%= ship[9].sails %><br>
+    Трюм: <%= ship[9].hold %><br>
+    Скорость: <%= ship[9].speed %><br>
+    Маневренность: <%= ship[9].mobility %><br>
+    Команда: <%= ship[9].team %><br>
+    Орудия(количество): <%= ship[9].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[9].guns.funt_guns %><br>
+    Требование: Уровень навигации <%= ship[9].navigation %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[9].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="9">
+      <button type="submit" class="button_buy" id="9">К</button>
+    </form></div>
+</div>
+
+<ul class="list_a">
+<li><a href="/verf"><div class="body_div">
+  <span class="body_span3"><img src="/images/city/verf2.png"></span>Верфь</div></a></li>
+</ul>
+
+<script type="text/javascript">
+  var index_ship = '' + <%- JSON.stringify(user.ship.index_ship) %>;
+  if (index_ship >= 7 && index_ship <= 9) {
+    document.getElementById(index_ship).style.width = '0px';
+    document.getElementById(index_ship).style.height = '0px';
+    document.getElementById(index_ship).innerHTML = '';
+  }
+
+  var err_status_low = <%- JSON.stringify(err_status_low) %>;
+  var err_message_low= <%- JSON.stringify(err_message_low) %>;
+    if (err_status_low >= 1 && err_status_low <= 9) {
+      document.getElementById('err_message_low').innerHTML = err_message_low;
+    }
+</script>

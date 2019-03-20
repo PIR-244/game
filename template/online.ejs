@@ -1,0 +1,57 @@
+
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/online.css">
+<div class="img_display">
+  <img class="img_shop" src="/images/user/onlayn.png" alt="."><h3>Онлайн</h3>
+</div>
+
+<ul id="letters_ul" class="pol_tuskl">
+</ul>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/online?page=<%= page-1 %>"><%= page-1 %></a>
+    <a class="button_page" id="button_page2" href="/online?page=<%= page %>"><%= page %></a>
+    <a class="button_page" id="button_page3" href="/online?page=<%= page+1 %>"><%= page+1 %></a>
+</div>
+
+
+<script type="text/javascript">
+var page = <%- JSON.stringify(page) %>;
+  document.getElementById('button_page2').classList.add('disabled');
+
+var poryadok = <%- JSON.stringify(poryadok) %>;
+var list = <%- JSON.stringify(list) %>;
+if (page+1 < 1 || page+1 > list) {
+  document.getElementById('button_page3').classList.add('out_no');
+}
+if (page < 1 || page > list) {
+  document.getElementById('button_page2').classList.add('out_no');
+}
+if (page-1 < 1 || page-1 >= list) {
+  document.getElementById('button_page1').classList.add('out_no');
+}
+if (list <= 1) {
+  document.getElementById('button_page2').classList.add('out_no');
+  document.getElementById('button_page1').classList.add('out_no');
+  document.getElementById('button_page').style.width = '0px';
+  document.getElementById('button_page').style.height = '0px';
+  document.getElementById('button_page').style.padding = '0px';
+}
+
+
+var letters_ul = document.getElementById('letters_ul');
+
+if (poryadok[0] != 0) {
+  for (var i = 0; i < poryadok.length; i++) {
+    var li = document.createElement('li');
+    letters_ul.appendChild(li);
+    li.innerHTML = '<div class="body_div1"><a href="/user/info?user='+poryadok[i].username+'">'+poryadok[i].username+
+                  '</a></div>';
+  }
+
+  }
+  else {
+    letters_ul.innerHTML = '<div class="div_text">Все погибли!</div>';
+  }
+</script>

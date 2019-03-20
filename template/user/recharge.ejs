@@ -1,0 +1,90 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/recharge.css">
+<h3>Перезарядка</h3>
+<div class="div_zagolovok">
+  Заряд
+</div>
+<div id="letters_ul">
+</div>
+<div class="div_zagolovok">
+  Доступно
+</div>
+<div class="div_probel_block">
+
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/yadra.jpg" alt="Ядра">
+  <p><strong>Ядра</strong><br>Наносят равный урон кораблю и команде<br>
+    Количество в трюме: <%= user.ship.supplies.core %><br></p>
+    <% if(user.ship.guns.charge != 0 && user.ship.supplies.core > 0) { %>
+      <div class="block_div_shop">
+      <form class="form" action="/user/recharge" method="post">
+        <input type="hidden" name="value_zaryad" value="0">
+        <button type="submit" class="button">[Зарядить]</button>
+      </form></div>
+    <% } %>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/kartech.jpg" alt="Картечь">
+  <p><strong>Картечь</strong><br>Увеличенный урон по команде<br>
+    Количество в трюме: <%= user.ship.supplies.buckshot %><br></p>
+    <% if(user.ship.guns.charge != 1 && user.ship.supplies.buckshot > 0) { %>
+      <div class="block_div_shop">
+      <form class="form" action="/user/recharge" method="post">
+        <input type="hidden" name="value_zaryad" value="1">
+        <button type="submit" class="button">[Зарядить]</button>
+      </form></div>
+    <% } %>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/knippeli.jpg" alt="Книппели">
+  <p><strong>Книппели</strong><br>Увеличенный урон по парусам<br>
+    Количество в трюме: <%= user.ship.supplies.barshots %><br></p>
+    <% if(user.ship.guns.charge != 2 && user.ship.supplies.barshots > 0) { %>
+      <div class="block_div_shop">
+      <form class="form" action="/user/recharge" method="post">
+        <input type="hidden" name="value_zaryad" value="2">
+        <button type="submit" class="button">[Зарядить]</button>
+      </form></div>
+    <% } %>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/bomby.jpg" alt="Бомбы">
+  <p><strong>Бомбы</strong><br>Увеличенный урон по корпусу<br>
+    Количество в трюме: <%= user.ship.supplies.bombs %><br></p>
+    <% if(user.ship.guns.charge != 3 && user.ship.supplies.bombs > 0) { %>
+      <div class="block_div_shop">
+      <form class="form" action="/user/recharge" method="post">
+        <input type="hidden" name="value_zaryad" value="3">
+        <button type="submit" class="button">[Зарядить]</button>
+      </form></div>
+    <% } %>
+</div>
+<ul class="list_a">
+  <li><a href="/user/ship"><div class="body_div">
+    <span class="body_span1"><img src="/images/navi_niz/korabl.png"></span>Корабль</div></a></li>
+    <li><a href="/user/abilities"><div class="body_div">
+      <span class="body_span"><img src="/images/user/sposobnosti.png"></span>Способности</div></a></li>
+      <li><a href="/user/alchimik"><div class="body_div">
+        <span class="body_span"><img src="/images/user/nastoyki.png"></span>Настойки</div></a></li>
+        <li><a href="/plavanie"><div class="body_div">
+          <span class="body_span3"><img src="/images/frontpage/plavanie2.png"></span>Плавание</div></a></li>
+</ul>
+<script type="text/javascript">
+
+var names_images = <%- JSON.stringify(names_images) %>;
+var alt_images = <%- JSON.stringify(alt_images) %>;
+
+var letters_ul = document.getElementById('letters_ul');
+
+    var div = document.createElement('div');
+    letters_ul.appendChild(div);
+    div.style.minHeight = '68px';
+    div.style.padding = '0px 4.2% 0px 4.2%';
+
+    div.innerHTML = '<img src="/images/shop/'+names_images+'.jpg" alt="'+alt_images+'" title="'+alt_images+
+      '">';
+
+
+</script>

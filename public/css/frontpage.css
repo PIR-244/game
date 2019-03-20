@@ -1,0 +1,39 @@
+h3 {
+  text-align:center;
+  padding: 0 4.2% 5px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 15px;
+  text-align:center;
+  padding: 0 4.2% 15px 4.2%;
+  color: #302314;
+}
+#span_online{
+  font-size: 14px;
+  font-style: italic;
+}
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}
+.body_span2{
+  position: relative;
+  margin-right: 3px;
+  top: 0px;
+}
+.body_span2 img{
+  width: 19px;
+}
+.body_span3{
+  position: relative;
+  margin-right: 3px;
+  top: 4px;
+}
+.body_span3 img{
+  width: 19px;
+}

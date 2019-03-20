@@ -1,0 +1,23 @@
+<% if(user) { %>
+  <div id="promlogoutNavigation"></div>
+<nav id="logoutNavigation" role="navigation">
+<ul>
+  <li><a href="/pochta/support">Поддержка</a></li>
+  <li><a href="/user/settings">Настройки</a></li>
+    <li><a href="" id="logout" onclick="$(document.body).append($('<form method=POST action=/logout>'));$('form').submit();return false">Выйти</a></li>
+</ul>
+<div id="prava">2018 &#xa9; Все права защищены</div>
+</nav>
+
+<script type="text/javascript">
+var html = document.getElementById("warning").innerText;
+if (html.length > 0) {
+  document.getElementById('warning_verh').style.height = '17px';
+  document.getElementById('warning_niz').style.height = '13px';
+}
+</script>
+<% } else { %>
+<div id="promlogoutNavigation"></div>
+
+<div id="prava_noregan">2018 &#xa9; Все права защищены</div>
+<% } %>

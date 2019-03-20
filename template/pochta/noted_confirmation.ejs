@@ -1,0 +1,38 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы действительно хотите удалить "<%=username%>" из отмеченных?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="#" onclick="go_no()"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go() {
+ var username = <%- JSON.stringify(username) %>;
+ var page = <%- JSON.stringify(page) %>;
+ var href_window = '/pochta/noted/?page='+page;
+    $.ajax({
+      url: '/pochta/noted/confirmation',
+      method: "POST",
+      data: {username:username},
+      statusCode: {
+        200: function(){
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+function go_no() {
+ var page = <%- JSON.stringify(page) %>;
+ var href_window = '/pochta/noted/?page='+page;
+window.location.href = href_window;
+   return false;
+}
+
+</script>

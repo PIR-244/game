@@ -1,0 +1,51 @@
+<div id="promo_message"></div>
+<script type="text/javascript">
+  var promo_end = <%- JSON.stringify(user.promo.end_promo) %>;
+  promo_end = new Date(promo_end);
+  var date_now = new Date();
+
+  if (date_now < promo_end) {
+    var promo_message = document.getElementById('promo_message');
+    date_now = Math.floor((promo_end.getTime() - date_now.getTime())*0.001);
+    var date_message = '';
+    if (date_now >= 60*60) {
+      date_message = Math.floor(date_now/(60*60))+'.';
+      if (date_now < 60*60*10) {
+        date_message = '0'+date_message;
+      }
+      date_now = Math.floor((date_now/(60*60)-Math.floor(date_now/(60*60)))*(60*60));
+    } else {
+      date_message = '00.';
+    }
+    if (date_now >= 60) {
+      if (date_now < 60*10) {
+        date_message = date_message+'0.';
+      } else {
+        date_message = date_message + Math.floor(date_now/60)+'.';
+      }
+      date_now = Math.floor((date_now/60-Math.floor(date_now/60))*60);
+    } else {
+      date_message = date_message + '00.';
+    }
+    if (date_now < 10) {
+      date_message = date_message + '0' + date_now;
+    } else {
+      date_message = date_message + date_now;
+    }
+    promo_message.innerHTML = 'Акция: Получи 1000 рублей или любую способность 5 уровня на выбор. Истекает через: '+date_message+' <a class="promo_mess_a" href="/promo">[Просмотреть]</a> <a class="promo_mess_a" href="#" onclick="go()">[Закрыть]</a>';
+  }
+
+  function go() {
+      $.ajax({
+        url: '/promo',
+        method: "POST",
+        data: {},
+        statusCode: {
+          200: function(){
+            location.reload(true);
+          }
+        }
+      });
+     return false;
+  }
+</script>

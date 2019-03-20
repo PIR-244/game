@@ -1,0 +1,98 @@
+input::-moz-selection{background: #d2b777; color: black;}
+input::webkit-selection{background: #d2b777; color: black;}
+input::selection{background: #d2b777; color: black;}
+
+#letters_ul a:hover{
+  color: #946012;
+}
+#letters_ul a{
+  display: inline;
+}
+h3 {
+  text-align:center;
+  padding: 0 4.2% 15px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 14px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  padding-left: 4.2%;
+  margin-bottom: 3px;
+}
+.span_text{
+  font-size: 15px;
+  color: #302314;
+  word-wrap: break-word;
+}
+.span_time{
+  font-size: 13px;
+  color: #946012;
+  margin-left: 5px;
+}
+.form{
+  text-align: center;
+    display: block;
+}
+input{
+  background-color: white;
+  border: 0px;
+  width: 80.9%;
+  height: 20px;
+  margin-bottom: 6px;
+}
+.button_buy{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/otpravitKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ margin-bottom: 10px;
+}
+#button_page{
+
+  padding: 14px 0 10px 0;
+  text-align: center;
+}
+.button_page{
+
+  display: inline-block;
+  margin: auto;
+  background: #d2b777;
+  font-size: 18px;
+  height: 21px;
+  width: 22px;
+  margin: 0px 2px;
+}
+.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    background: #a97b4e; /* цвет текста для нективной ссылки */
+    display: inline-block;
+    margin: auto;
+    font-size: 18px;
+    height: 21px;
+    width: 22px;
+    margin: 0px 2px;
+}
+.out_no{
+  display: inline-block;
+  margin: auto;
+  background: transparent;
+  font-size: 0px;
+  height: 0px;
+  width: 0px;
+  margin: 0px 2px;
+}
+
+.body_span2{
+  position: relative;
+  margin-right: 3px;
+  top: 0px;
+}
+.body_span2 img{
+  width: 19px;
+}

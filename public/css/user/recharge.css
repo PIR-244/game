@@ -1,0 +1,85 @@
+h3 {
+  padding: 3px 4.2% 10px 4.2%;
+  color: #302314;
+  text-align: center;
+}
+.div_zagolovok{
+  font-size: 16px;
+  color: #946012;
+  text-align: center;
+  font-weight: 510;
+  margin-bottom: 5px;
+}
+p{
+  font-size: 15px;
+  color: #302314;
+  margin-top: 3px;
+}
+#letters_ul{
+  text-align: center;
+}
+.img_shop{
+    margin-top: 5px;
+    margin-right: 8px;
+  float: left;
+  font-size: 10px;
+  font-style: italic;
+  margin-bottom: 5px;
+}
+.div_probel_block{
+  height: 5px;
+}
+.ul_li {
+  background-image: url(/images/poloskatuskl.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 4.2% 4px 4.2%;
+display: flow-root;
+}
+.button{
+  border: 0px;
+ background: transparent;
+ color: #563711;
+ font-size: 13px;
+ cursor: pointer;
+}
+.block_div_shop{
+  display: block;
+  text-align: center;
+  margin-left: 17%;
+  margin-right: 17%;
+}
+
+.button:hover{
+ color: #946012;
+}
+.list_a{
+  margin-top: 10px;
+}
+.list_a{
+  margin-top: 10px;
+}
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}
+.body_span1{
+  position: relative;
+  margin-right: 3px;
+  top: 2px;
+}
+.body_span1 img{
+  width: 19px;
+}
+.body_span3{
+  position: relative;
+  margin-right: 3px;
+  top: 4px;
+}
+.body_span3 img{
+  width: 19px;
+}

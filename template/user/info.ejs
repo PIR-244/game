@@ -1,0 +1,138 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/info.css">
+<div class="img_display">
+  <h3><%= username %></h3>
+  <img class="img_shop1" src="/images/avatarky/<%= avatar_index %>.jpg" alt="">
+</div>
+<div class="ul_li">
+  <p id="info_user">
+  </p>
+</div>
+<% if(info == 'skills') { %>
+  <div class="div_zagolovok">Навыки</div>
+  <div class="ul_li">
+    <p><img class="img_shop" src="/images/user/metkost.png" alt="">
+      Меткость: <%= skills.marksmanship %><br>
+      <img class="img_shop" src="/images/user/zaschita.png" alt="">
+    Защита: <%= skills.protection %><br>
+    <img class="img_shop" src="/images/user/stoykost.png" alt="">
+    Стойкость: <%= skills.resistance %><br>
+    <img class="img_shop" src="/images/user/abordazh.png" alt="">
+    Абордаж: <%= skills.boarding %><br>
+    <img class="img_shop" src="/images/user/navigatsia.png" alt="">
+    Навигация: <%= skills.navigation %>
+    </p>
+  </div>
+<% } %>
+<% if(info == 'statistics') { %>
+  <div class="div_zagolovok">Статистика</div>
+<div class="ul_li">
+  <p><img class="img_shop" src="/images/user/pobed.png" alt="">
+    Победы: <%= statistics.victories %><br>
+    <img class="img_shop" src="/images/user/porazhenie.png" alt="">
+  Поражения: <%= statistics.defeats %><br>
+  <img class="img_shop" src="/images/user/nagrableno.png" alt="">
+  Награбил: <%= statistics.robbed %> песо<br>
+  <img class="img_shop" src="/images/user/poteryal.png" alt="">
+  Потерял: <%= statistics.lost %> песо<br>
+  <img class="img_shop" src="/images/user/karavan2.png" alt="">
+  Ограблено караванов: <%= statistics.looted_caravans %>
+  </p>
+</div>
+<% } %>
+
+
+<ul class="list_a" id="list_a">
+  <% if(info != 'skills') { %>
+  <li><a href="/user/info?user=<%= username %>&info=skills"><div class="body_div">
+    <span class="body_span"><img src="/images/college/navyki.png" alt=""></span>Навыки</div></a></li>
+    <% } %>
+    <% if(info != 'statistics') { %>
+    <li><a href="/user/info?user=<%= username %>&info=statistics"><div class="body_div">
+      <span class="body_span"><img src="/images/user/statistika.png" alt=""></span>Статистика</div></a></li>
+      <% } %>
+      <% if(value_noted != 2) { %>
+      <li><a href="/pochta?user=<%= username %>"><div class="body_div">
+        <span class="body_span2"><img src="/images/navi_verch/pochta1.png"></span>Переписка</div></a></li>
+        <% } %>
+      <% if(value_noted == 0) { %>
+      <li><a href="#" onclick="go()"><div class="body_div">
+      <span class="body_span"><img src="/images/user/otmetit.png" alt=""></span>Отметить</div></a></li>
+      <% } %>
+</ul>
+
+<script type="text/javascript">
+var last_action = <%- JSON.stringify(last_action) %>;
+var rating = <%- JSON.stringify(rating) %>;
+var ship_name = <%- JSON.stringify(ship_name) %>;
+var last_action_user = <%- JSON.stringify(user.last_action) %>;
+
+var info_user = document.getElementById('info_user');
+
+var date_message = new Date(last_action);
+var date_now = new Date(last_action_user);
+date_now = Math.floor((date_now.getTime() - date_message.getTime())*0.001);
+var online = '<img class="img_shop" src="/images/user/onlayn.png" alt="">'+
+        ' Сейчас в сети<br>';
+if (date_now > 30*60) {
+  var hours = '';
+  if(date_message.getHours() < 10)
+      hours = '0';
+  var minutes = '';
+  if(date_message.getMinutes() < 10)
+      minutes = '0';
+  var month = date_message.getMonth();
+  var month_rus = '';
+  if (month == 0) { month_rus='Января'; }
+  else if (month == 1) { month_rus='Февраля'; }
+  else if (month == 2) { month_rus='Марта'; }
+  else if (month == 3) { month_rus='Апреля'; }
+  else if (month == 4) { month_rus='Мая'; }
+  else if (month == 5) { month_rus='Июня'; }
+  else if (month == 6) { month_rus='Июля'; }
+  else if (month == 7) { month_rus='Августа'; }
+  else if (month == 8) { month_rus='Сентября'; }
+  else if (month == 9) { month_rus='Октября'; }
+  else if (month == 10) { month_rus='Ноября'; }
+  else if (month == 1) { month_rus='Декабря'; }
+  var clock = date_message.getDate()+' '+month_rus+' '+hours + date_message.getHours()+ ":"+ minutes + date_message.getMinutes();
+  online = '<img class="img_shop" src="/images/user/offlayn.png" alt="">'+
+          ' Время последнего действия: '+clock+'<br>';
+}
+var rating_mess = ' Рейтинг не определен<br>';
+if (rating != 0) {
+  rating_mess = ' Рейтинг: '+rating+'<br>';
+}
+info_user.innerHTML = online+'<img class="img_shop2" src="/images/user/klanmelk.png" alt="">'+
+        ' Не состоит в клане<br>'+'<img class="img_shop" src="/images/user/reyting.png" alt="">'+rating_mess+
+        '<img class="img_shop3" src="/images/navi_niz/korabl.png" alt=""> Корабль: '+ship_name;
+
+
+
+
+function go() {
+ var username = <%- JSON.stringify(username) %>;
+ var href_window = '/user/info?user='+username;
+    $.ajax({
+      url: '/user/noted',
+      method: "POST",
+      data: {username: username},
+      statusCode: {
+        200: function(err_status_low){
+          err_status_low = JSON.parse(err_status_low);
+          href_window = href_window + '&err_status_low=' + err_status_low;
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+</script>
+<script type="text/javascript">
+var err_status_low = <%- JSON.stringify(err_status_low) %>;
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_status_low == 1) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

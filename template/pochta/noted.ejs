@@ -1,0 +1,69 @@
+
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/pochta/noted.css">
+  <h3>Почта</h3>
+  <p><a href="/pochta/last"><span id="last">Последние</span></a> | <span id="noted">Отмеченные</span></p>
+  <div id="noteds_undefined"></div>
+<ul id="noteds_ul" class="pol_tuskl">
+</ul>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/pochta/last?page=1">1</a>
+    <a class="button_page" id="button_page2" href="/pochta/last?page=2">2</a>
+    <a class="button_page" id="button_page3" href="/pochta/last?page=3">3</a>
+</div>
+
+
+<script type="text/javascript">
+var page = <%- JSON.stringify(page) %>;
+if (page==2) {
+  document.getElementById('button_page2').classList.add('disabled');
+} else if (page==3) {
+  document.getElementById('button_page3').classList.add('disabled');
+} else {
+  document.getElementById('button_page1').classList.add('disabled');
+}
+var noteds = <%- JSON.stringify(noteds) %>;
+var noteds_list = <%- JSON.stringify(noteds_list) %>;
+if (noteds_list <= 20) {
+  document.getElementById('button_page3').classList.add('out_no');
+}
+if (noteds_list <= 10) {
+  document.getElementById('button_page2').classList.add('out_no');
+  document.getElementById('button_page1').classList.add('out_no');
+  document.getElementById('button_page').style.width = '0px';
+  document.getElementById('button_page').style.height = '0px';
+  document.getElementById('button_page').style.padding = '0px';
+}
+
+var noteds_ul = document.getElementById('noteds_ul');
+if (noteds[0] != 0) {
+  for (var i = 0; i < noteds.length; i++) {
+    var li = document.createElement('li');
+    noteds_ul.appendChild(li);
+    var username = <%- JSON.stringify(user.username) %>;
+    if (noteds[i].sender != username) {
+      username = noteds[i].sender;
+    } else {
+      username = noteds[i].recipient;
+    }
+
+    li.innerHTML = '<div class="body_div1"><a href="/user/info?user='+username+'">'+username+
+                  '</a><div class="div_button_center">'+
+                  '<form class="form" action="/pochta" method="get">'+
+                  '<input type="hidden" name="user" value="'+username+'">'+
+                  '<button type="submit" class="button_buy">Н</button></form>'+
+                  '<form class="form" action="/pochta/noted/confirmation" method="get">'+
+                  '<input type="hidden" name="user" value="'+username+'">'+
+                  '<input type="hidden" name="page" value="'+page+'">'+
+                  '<button type="submit" class="button_delete">У</button></form></div></div>';
+
+  }
+} else {
+  var noteds_undefined = document.getElementById('noteds_undefined');
+  noteds_undefined.innerHTML = 'Список пуст!';
+  noteds_undefined.style.paddingBottom = '13px';
+}
+
+</script>

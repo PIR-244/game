@@ -1,0 +1,75 @@
+h3 {
+  color: #302314;
+  display: inline-block;
+}
+.img_shop{
+margin-right: 3px;
+    position: relative;
+    top: 1px;
+    display: inline;
+}
+.img_display{
+
+  text-align: center;
+
+  padding: 0 4.2% 15px 4.2%;
+}
+p{
+  font-size: 14px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  padding-left: 4.2%;
+  margin-bottom: 7px;
+  color: #302314;
+}
+.pol_tuskl li{
+  background-image: url(/images/poloskatuskl.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+}
+ul li div a{
+  margin-top: 8px;
+  display: inline-block;
+  margin-right: 15px;
+}
+ul li div a:hover{
+  color: #946012;
+}
+.body_div1{
+  margin: 4px 3.6% 8px 3.6%;
+}
+#button_page{
+
+  padding: 14px 0 10px 0;
+  text-align: center;
+}
+.button_page{
+
+  display: inline-block;
+  margin: auto;
+  background: #d2b777;
+  font-size: 18px;
+  height: 21px;
+  width: 22px;
+  margin: 0px 2px;
+}
+.disabled {
+    pointer-events: none; /* делаем ссылку некликабельной */
+    cursor: default;  /* устанавливаем курсор в виде стрелки */
+    background: #a97b4e; /* цвет текста для нективной ссылки */
+    display: inline-block;
+    margin: auto;
+    font-size: 18px;
+    height: 21px;
+    width: 22px;
+    margin: 0px 2px;
+}
+.out_no{
+  display: inline-block;
+  margin: auto;
+  background: transparent;
+  font-size: 0px;
+  height: 0px;
+  width: 0px;
+  margin: 0px 0px;
+}

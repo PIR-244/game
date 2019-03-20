@@ -1,0 +1,72 @@
+input::-moz-selection{background: #d2b777; color: black;}
+input::webkit-selection{background: #d2b777; color: black;}
+input::selection{background: #d2b777; color: black;}
+
+#letters_ul a:hover{
+  color: #946012;
+}
+#letters_ul a{
+  display: inline;
+}
+h3 {
+  text-align:center;
+  padding: 0 4.2% 15px 4.2%;
+  color: #302314;
+}
+.strong_support {
+  text-align: center;
+  color: #302314;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 510;
+}
+p{
+  font-size: 14px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  padding-left: 4.2%;
+  margin-bottom: 3px;
+}
+.span_text{
+  font-size: 15px;
+  color: #302314;
+  word-wrap: break-word;
+}
+.span_time{
+  font-size: 13px;
+  color: #946012;
+  margin-left: 5px;
+}
+.form{
+  text-align: center;
+    display: block;
+}
+input{
+  background-color: white;
+  border: 0px;
+  width: 80.9%;
+  height: 20px;
+  margin-bottom: 6px;
+}
+.button_buy{
+  cursor: pointer;
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/otpravitKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ margin-bottom: 10px;
+}
+
+
+
+.body_span2{
+  position: relative;
+  margin-right: 3px;
+  top: 0px;
+}
+.body_span2 img{
+  width: 19px;
+}

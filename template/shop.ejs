@@ -1,0 +1,191 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/shop.css">
+<h3>Магазин</h3>
+<% if(page == 1) { %>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/yadra.jpg" alt="Ядра">
+  <p><strong>Ядра</strong><br>Наносят равный урон кораблю и команде<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 10</span><br>
+    Количество в трюме: <%= user.ship.supplies.core %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 2 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="0">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 1 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="0">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/kartech.jpg" alt="Картечь">
+  <p><strong>Картечь</strong><br>Увеличенный урон по команде<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 10</span><br>
+    Количество в трюме: <%= user.ship.supplies.buckshot %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 4 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="1">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 2 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="1">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/knippeli.jpg" alt="Книппели">
+  <p><strong>Книппели</strong><br>Увеличенный урон по парусам<br>
+    Вес пачки: 2   <span class="span_block_text">Количество в пачке: 10</span><br>
+    Количество в трюме: <%= user.ship.supplies.barshots %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 7 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="2">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 3 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="2">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/bomby.jpg" alt="Бомбы">
+  <p><strong>Бомбы</strong><br>Увеличенный урон по корпусу<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 10</span><br>
+    Количество в трюме: <%= user.ship.supplies.bombs %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 23 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="3">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 11 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="3">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/porokh.jpg" alt="Порох">
+  <p><strong>Порох</strong><br>Необходим для стрельбы из орудий<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 20</span><br>
+    Количество в трюме: <%= user.ship.supplies.gunpowder %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 26 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="4">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 13 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="4">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<% } else { %>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/proviant.jpg" alt="Провиант">
+  <p><strong>Провиант</strong><br>Необходим для жизни команды. Потребляется каждые 2 часа<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 10</span><br>
+    Количество в трюме: <%= user.ship.supplies.food %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 37 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="5">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 19 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="5">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/oruzhie.jpg" alt="Оружие">
+  <p><strong>Оружие</strong><br>Повышает урон команды при абордаже<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 5</span><br>
+    Количество в трюме: <%= user.ship.supplies.weapons %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 61 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="6">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 30 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="6">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/shop/lekarstva.jpg" alt="Лекарства">
+  <p><strong>Лекарства</strong><br>Используются для лечения раненных и их последующего возвращения в строй<br>
+    Вес пачки: 1   <span class="span_block_text">Количество в пачке: 20</span><br>
+    Количество в трюме: <%= user.ship.supplies.drugs %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: 85 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_products" value="7">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: 42 песо</span><br>
+    <form class="form" action="shop/confirmation" method="get">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_products" value="7">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<% } %>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/shop?page=1">1</a>
+    <a class="button_page" id="button_page2" href="/shop?page=2">2</a>
+</div>
+
+<ul class="list_a">
+  <li><a href="/city"><div class="body_div">
+    <span class="body_span"><img src="/images/frontpage/gorod1.png"></span>Город</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var page = <%- JSON.stringify(page) %>;
+if (page!=2) {
+  document.getElementById('button_page1').classList.add('disabled');
+} else {
+  document.getElementById('button_page2').classList.add('disabled');
+}
+var err_status_low = <%- JSON.stringify(err_status_low) %>;
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_status_low == 1 || err_status_low == 2 || err_status_low == 3 || err_status_low==4) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

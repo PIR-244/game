@@ -1,0 +1,55 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/plavanie/return_home.css">
+  <h3>Плавание</h3>
+  <p><img src="/images/plavanie/koridet.jpg" alt="."></p>
+  <% if(info_war) { %>
+    <div id="journals_list">
+
+    </div>
+    <% } %>
+  <span id="span_text"></span><div class="span_a">
+    <a href="/plavanie/assignments" id="span_a"><img src="/images/plavanie/obnovit.png" title="Обновить"></a>
+  </div>
+
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>
+<script type="text/javascript">
+var last_action = <%- JSON.stringify(user.war.last_action) %>;
+var date_now = <%- JSON.stringify(user.last_action) %>;
+var waiting = <%- JSON.stringify(user.war.waiting) %>;
+var last_action = new Date(last_action);
+var date_now = new Date(date_now);
+date_now = Math.floor((-date_now.getTime() + last_action.getTime())*0.001 + waiting);
+if (date_now < 0) {
+  date_now = 0;
+}
+  document.getElementById('span_text').innerHTML = 'До прибытия в порт осталось '+date_now+' сек.';
+
+
+  var info_war = <%- JSON.stringify(info_war) %>;
+  var journals_list = document.getElementById('journals_list');
+  if (info_war) {
+    username = <%- JSON.stringify(user.username) %>;
+      var p = document.createElement('p');
+      journals_list.appendChild(p);
+
+      var attack_war = '';
+      if (info_war.sender == username) {
+        if (info_war.value_war == 5)  { // shop_true
+          attack_war = 'Задание доставить груз выполнено. В награду ты получаешь товар "'+info_war.bot_name+
+                      '" в количестве '+info_war.reward+' штук и 1 рейтинг';
+        }
+        else if (info_war.value_war == 6)  { // tavern_true
+          attack_war = 'Задание попутчик выполнено. Твоя награда '+
+                          info_war.reward+' песо и 1 рейтинг';
+        }
+      }
+      p.innerHTML = attack_war;
+  }
+</script>

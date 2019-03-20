@@ -1,0 +1,198 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/logbook.css">
+<h3>Судовой журнал</h3>
+<div id="journals_list">
+
+</div>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/logbook?page=<%=page-1%>"><%=page-1%></a>
+    <a class="disabled" id="button_page2"><%=page%></a>
+    <a class="button_page" id="button_page3" href="/logbook?page=<%=page+1%>"><%=page+1%></a>
+</div>
+
+<script>
+journals_poryadok = <%- JSON.stringify(journals_poryadok) %>;
+max_journals = <%- JSON.stringify(max_journals) %>;
+page = <%- JSON.stringify(page) %>;
+username = <%- JSON.stringify(user.username) %>;
+
+var journals_list = document.getElementById('journals_list');
+if (max_journals > 10) {
+  if (max_journals <= (page)*10) {
+    document.getElementById('button_page3').classList.add('out_no');
+  }
+  if (page == 1) {
+    document.getElementById('button_page1').classList.add('out_no');
+  }
+} else {
+  document.getElementById('button_page2').classList.add('out_no');
+  document.getElementById('button_page1').classList.add('out_no');
+  document.getElementById('button_page3').classList.add('out_no');
+  document.getElementById('button_page').style.width = '0px';
+  document.getElementById('button_page').style.height = '0px';
+  document.getElementById('button_page').style.padding = '0px';
+  journals_list.style.paddingBottom = '5px';
+}
+
+if (max_journals > 0) {
+  for (var i = 0; i < journals_poryadok.length; i++) {
+    var p = document.createElement('p');
+    journals_list.appendChild(p);
+
+    var date_event = new Date(journals_poryadok[i].created);
+    var hours = '';
+    if(date_event.getHours() < 10)
+        hours = '0';
+    var minutes = '';
+    if(date_event.getMinutes() < 10)
+        minutes = '0';
+    var month = date_event.getMonth();
+    var month_rus = '';
+    if (month == 0) { month_rus='Января'; }
+    else if (month == 1) { month_rus='Февраля'; }
+    else if (month == 2) { month_rus='Марта'; }
+    else if (month == 3) { month_rus='Апреля'; }
+    else if (month == 4) { month_rus='Мая'; }
+    else if (month == 5) { month_rus='Июня'; }
+    else if (month == 6) { month_rus='Июля'; }
+    else if (month == 7) { month_rus='Августа'; }
+    else if (month == 8) { month_rus='Сентября'; }
+    else if (month == 9) { month_rus='Октября'; }
+    else if (month == 10) { month_rus='Ноября'; }
+    else if (month == 11) { month_rus='Декабря'; }
+    var clock = date_event.getDate()+' '+month_rus+' '+hours + date_event.getHours()+
+                  ":"+ minutes + date_event.getMinutes();
+
+    var attack_war = '';
+    if (journals_poryadok[i].sender == username) {
+      if (journals_poryadok[i].value_war <= 3) {
+        if (journals_poryadok[i].recipient == 'bot') {
+          var a_name = '"'+journals_poryadok[i].bot_name+'"';
+        } else {
+          var a_name = '<a class="a_hover" href="/user/info?user='+journals_poryadok[i].recipient+'">'
+                                  +journals_poryadok[i].recipient+'</a>';
+        }
+        attack_war = 'Ты атаковал капитана '+a_name;
+
+        if (journals_poryadok[i].value_war == 0) { // Потопить
+          p.style.color = 'green';
+          if (journals_poryadok[i].number_one == 0) {
+            attack_war = attack_war+', и потопил его судно. Твоя награда '+journals_poryadok[i].reward+' песо';
+            if (journals_poryadok[i].rating == 1) {
+              attack_war = attack_war+' и 1 рейтинг';
+            } else if (journals_poryadok[i].rating == 2) {
+              attack_war = attack_war+' и 2 рейтинга';
+            }
+          } else {
+            p.style.color = '#bb1600';
+            attack_war = attack_war+', но проиграл сражение. Твои потери '+journals_poryadok[i].reward+' песо';
+            if (journals_poryadok[i].rating == 2) {
+              attack_war = attack_war+' и 1 рейтинг';
+            }
+          }
+        }
+        else if (journals_poryadok[i].value_war == 1) { // BOARD
+          if (journals_poryadok[i].number_one == 0) {
+            p.style.color = 'green';
+            attack_war = attack_war+', и взял его корабль на абордаж. Твоя награда '+journals_poryadok[i].reward+' песо';
+            if (journals_poryadok[i].rating == 1) {
+              attack_war = attack_war+' и 1 рейтинг';
+            } else if (journals_poryadok[i].rating == 2) {
+              attack_war = attack_war+' и 2 рейтинга';
+            }
+          } else {
+            p.style.color = '#bb1600';
+            attack_war = attack_war+', но проиграл абордаж. Твои потери '+journals_poryadok[i].reward+' песо';
+            if (journals_poryadok[i].rating == 2) {
+              attack_war = attack_war+' и 1 рейтинг';
+            }
+          }
+        }
+        else if (journals_poryadok[i].value_war == 2) { // AWAY
+          if (journals_poryadok[i].number_one == 0) {
+            attack_war = attack_war+', но враг оказался сильнее и ты покинул сражение.';
+          } else {
+            attack_war = attack_war+', но враг смог уплыть!';
+          }
+        }
+        else /*if (journals_poryadok[i].value_war == 3) */ { // Ничья
+          attack_war = attack_war+', но оба корабля уцелели.';
+        }
+      }
+      else if (journals_poryadok[i].value_war == 4)  { // residence_true
+        attack_war = 'Задание охотник за головами выполнено. Твоя награда '+
+                        journals_poryadok[i].reward+' золотых слитка и 2 рейтинга';
+      }
+      else if (journals_poryadok[i].value_war == 5)  { // shop_true
+        attack_war = 'Задание доставить груз выполнено. В награду ты получаешь товар "'+journals_poryadok[i].bot_name+
+                    '" в количестве '+journals_poryadok[i].reward+' штук и 1 рейтинг';
+      }
+      else /*if (journals_poryadok[i].value_war == 6)*/  { // tavern_true
+        attack_war = 'Задание попутчик выполнено. Твоя награда '+
+                        journals_poryadok[i].reward+' песо и 1 рейтинг';
+      }
+    } else {
+      if (journals_poryadok[i].sender == 'bot') {
+        var a_name = '"'+journals_poryadok[i].bot_name+'"';
+      } else {
+        var a_name = '<a class="a_hover" href="/user/info?user='+journals_poryadok[i].sender+'">'
+                                +journals_poryadok[i].sender+'</a>';
+      }
+      attack_war = 'На тебя напал '+a_name;
+
+      if (journals_poryadok[i].value_war == 0) { // Потопить
+        if (journals_poryadok[i].number_one == 0) {
+          p.style.color = '#bb1600';
+          attack_war = attack_war+', и выиграл сражение. Твои потери '+journals_poryadok[i].reward+' песо';
+          if (journals_poryadok[i].rating == 2) {
+            attack_war = attack_war+' и 1 рейтинг';
+          }
+        } else {
+          p.style.color = 'green';
+          attack_war = attack_war+', но ты потопил его судно. Твоя награда '+journals_poryadok[i].reward+' песо';
+          if (journals_poryadok[i].rating == 1) {
+            attack_war = attack_war+' и 1 рейтинг';
+          } else if (journals_poryadok[i].rating == 2) {
+            attack_war = attack_war+' и 2 рейтинга';
+          }
+        }
+      }
+      else if (journals_poryadok[i].value_war == 1) { // BOARD
+        if (journals_poryadok[i].number_one == 1) {
+          p.style.color = 'green';
+          attack_war = attack_war+', но ты взял его корабль на абордаж. Твоя награда '+journals_poryadok[i].reward+' песо';
+          if (journals_poryadok[i].rating == 1) {
+            attack_war = attack_war+' и 1 рейтинг';
+          } else if (journals_poryadok[i].rating == 2) {
+            attack_war = attack_war+' и 2 рейтинга';
+          }
+        } else {
+          p.style.color = '#bb1600';
+          attack_war = attack_war+', и выиграл абордаж. Твои потери '+journals_poryadok[i].reward+' песо';
+          if (journals_poryadok[i].rating == 2) {
+            attack_war = attack_war+' и 1 рейтинг';
+          }
+        }
+      }
+      else if (journals_poryadok[i].value_war == 2) { // AWAY
+        if (journals_poryadok[i].number_one == 1) {
+          attack_war = attack_war+', но ты  смог уплыть!';
+        } else {
+          attack_war = attack_war+', но испугался и позорно отступил!';
+        }
+      }
+      else /*if (journals_poryadok[i].value_war == 3) */ { // Ничья
+        attack_war = attack_war+', но оба корабля уцелели.';
+      }
+    }
+    p.innerHTML = '<div class="time_div">'+clock+'</div>'+attack_war;
+  }
+} else{
+  journals_list.innerHTML = '<span class="span_text">Нет записей!</span>';
+  journals_list.style.paddingBottom = '9px';
+  journals_list.style.textAlign = 'center';
+}
+
+</script>

@@ -1,0 +1,93 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/ships.css">
+<h3>Корабль</h3>
+<div class="div_zagolovok">
+  Заряд
+</div>
+<div id="letters_ul">
+</div>
+<div class="div_zagolovok">
+  <%= ship.name %>
+</div>
+<div class="ul_li">
+  <p>
+    <img class="img_shop" src="/images/user/ship/korpus.png" alt="">
+     Корпус: <%= user.ship.hull %><br>
+       <img class="img_shop" src="/images/user/ship/parusa.png" alt="">
+   Паруса: <%= user.ship.sails %><br>
+     <img class="img_shop" src="/images/user/ship/matrosy.png" alt="">
+   Матросы: <%= user.ship.team.sailors %><br>
+     <img class="img_shop" src="/images/user/ship/abordazhniki.png" alt="">
+   Абордажники: <%= user.ship.team.boarders %><br>
+     <img class="img_shop" src="/images/user/ship/kanonir.png" alt="">
+   Канониры: <%= user.ship.team.gunners %><br>
+     <img class="img_shop" src="/images/user/ship/tryum.png" alt="">
+    Трюм: <%= user.ship.hold %><br>
+      <img class="img_shop" src="/images/user/ship/skorost.png" alt="">
+    Скорость: <%= user.ship.speed %><br>
+      <img class="img_shop" src="/images/user/ship/manevrennost.png" alt="">
+    Маневренность: <%= user.ship.mobility %><br>
+      <img class="img_shop" src="/images/user/ship/kolichestvo.png" alt="">
+    Орудия(количество): <%= user.ship.guns.number_guns %>/<%= ship.guns.number_guns %>(max)<br>
+      <img class="img_shop" src="/images/user/ship/funt.png" alt="">
+    Орудия(фунты): <%= guns.funt_guns %>/<%= ship.guns.funt_guns %>(max)</p>
+
+</div>
+<div class="div_zagolovok">
+  Трюм
+</div>
+<div class="ul_li">
+  <p><img class="img_shop" src="/images/user/ship/yadra.png" alt="">
+     Ядра: <%= user.ship.supplies.core %><br>
+       <img class="img_shop" src="/images/user/ship/kartech.png" alt="">
+   Картечь: <%= user.ship.supplies.buckshot %><br>
+     <img class="img_shop" src="/images/user/ship/knippeli.png" alt="">
+   Книппели: <%= user.ship.supplies.barshots %><br>
+     <img class="img_shop" src="/images/user/ship/bomby.png" alt="">
+   Бомбы: <%= user.ship.supplies.bombs %><br>
+     <img class="img_shop" src="/images/user/ship/porokh.png" alt="">
+   Порох: <%= user.ship.supplies.gunpowder %><br>
+     <img class="img_shop" src="/images/user/ship/proviant.png" alt="">
+    Провиант: <%= user.ship.supplies.food %><br>
+      <img class="img_shop" src="/images/user/ship/oruzhie.png" alt="">
+    Оружие: <%= user.ship.supplies.weapons %><br>
+      <img class="img_shop" src="/images/user/ship/lekarstva.png" alt="">
+    Лекарства: <%= user.ship.supplies.drugs %><br></p>
+
+</div>
+
+
+<ul class="list_a">
+  <li><a href="/user"><div class="body_div">
+    <span class="body_span"><img src="/images/navi_verch/pers2.png"></span>Персонаж</div></a></li>
+    <li><a href="/user/abilities"><div class="body_div">
+      <span class="body_span"><img src="/images/user/sposobnosti.png"></span>Способности</div></a></li>
+      <li><a href="/user/alchimik"><div class="body_div">
+        <span class="body_span"><img src="/images/user/nastoyki.png"></span>Настойки</div></a></li>
+<li><a href="/verf"><div class="body_div">
+  <span class="body_span3"><img src="/images/city/verf2.png"></span>Верфь</div></a></li>
+</ul>
+<script type="text/javascript">
+
+var names_images = <%- JSON.stringify(names_images) %>;
+var alt_images = <%- JSON.stringify(alt_images) %>;
+
+var letters_ul = document.getElementById('letters_ul');
+
+  letters_ul.style.marginBottom = '7px';
+    var div = document.createElement('div');
+    letters_ul.appendChild(div);
+    div.style.minHeight = '66px';
+    div.style.padding = '5px 4.2% 0px 4.2%';
+    var form = '';
+      form =
+      '<div class="block_div_shop"><form class="form" action="/user/recharge" method="get">'+
+      '<button type="submit" class="button">[Перезарядка]</button>'+
+    '</form></div>';
+
+    div.innerHTML = '<img class="img_shop" src="/images/shop/'+names_images+'.jpg" alt="'+alt_images+'" title="'+alt_images+
+      '">'+form;
+
+
+</script>

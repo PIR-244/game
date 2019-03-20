@@ -1,0 +1,22 @@
+#log_war{
+  margin-top: 3px;
+  margin-bottom: 4px;
+}
+.div_zagolovok{
+  font-size: 16px;
+  color: #946012;
+  text-align: center;
+  font-weight: 510;
+  margin-bottom: 7px;
+}
+.list_logWar{
+  font-size: 14px;
+  color: #302314;
+  margin: 2px 4.2% 1px 4.2%;
+}
+.time_mes {
+  display: inline-block;
+    font-size: 13px;
+    color: #946012;
+    margin-left: 5px;
+}

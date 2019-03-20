@@ -1,0 +1,81 @@
+<div id="training_message"></div>
+<script type="text/javascript">
+  var training_activity = <%- JSON.stringify(user.training) %>;
+  var training_message = document.getElementById('training_message');
+
+  if (training_activity == 1) {
+    training_message.innerHTML = 'Наставник: Приветствую тебя, Капитан! Моя задача научить тебя азам ведения боя. Если ты готов жми <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 2) {
+    training_message.innerHTML = 'Наставник: Для начала нам нужно закупиться припасами. Зайди в магазин и купи 5 пачек бомб';
+  } else if (training_activity == 3) {
+    training_message.innerHTML = 'Наставник: Далее во вкладке Корабль перейди на страницу перезарядки. Из списка доступных зарядов найди Бомбы и нажми зарядить';
+  } else if (training_activity == 4) {
+    training_message.innerHTML = 'Немного информации перед боем: Перед тем как выйти в открытое море проверь свой корабль. Корпус, паруса и команда твоего корабля должны быть не меньше половины от их максимума <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 5) {
+    training_message.innerHTML = 'Набрать команду можно в таверне. Для восстановления корпуса и парусов, нужны доски и парусина, которые можно купить в магазине. Скорость починки корабля зависит от количества команды на вашем судне <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 6) {
+    training_message.innerHTML = 'Если трюм пуст, а денег на покупку припасов нет, ты всегда можешь пойти в банк и взять в долг песо. Итак в бой! <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 7) {
+    training_message.innerHTML = 'Наставник: Перейди в Плавание и в поиске противников выбери ровню';
+  } else if (training_activity == 8) {
+    training_message.innerHTML = 'Наставник: Дождись когда на горизонте появится вражеский корабль и напади на него. В среднем поиск противника занимает 35-40 сек.';
+  } else if (training_activity == 9) {
+    training_message.innerHTML = 'Наставник: Стреляй бомбами и разнеси вражескую посудину в щепки!';
+  }
+  // part_2
+  else if (training_activity == 10) {
+    training_message.innerHTML = 'Наставник: С победой, Капитан! Держи свою награду: 900 песо <a id="training_mess_a" href="#" onclick="go()">[Забрать]</a>';
+  } else if (training_activity == 11) {
+    training_message.innerHTML = 'Наставник: Песо является основной валютой. За песо можно покупать товары в магазине, нанимать команду в таверне, приобретать корабли и орудия для них. Также песо нужно для улучшения навыков  <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 12) {
+    training_message.innerHTML = 'Наставник: Зайди в мореходный колледж и улучши каждый навык до 5 уровня';
+  } else if (training_activity == 13) {
+    training_message.innerHTML = 'Наставник: Кроме того навыки можно повышать, получая опыт в плавании. На количество получаемого опыта влияет ранг судна, способность Ученый и настойка, которую можно приобрести у алхимика <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 14) {
+    training_message.innerHTML = 'Наставник: В перерывах между сражениями выполняй задания, за выполнение которых дают неплохую награду. А сейчас возьми задание Попутчик';
+  } else if (training_activity == 15) {
+    training_message.innerHTML = 'Наставник: Отлично, но имей ввиду что в Плавании на тебя могут напасть в любой момент. Так что перед отплытием отдавай песо на хранение в банк <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+  } else if (training_activity == 16) {
+    training_message.innerHTML = 'Наставник: Теперь иди в банк и открой 1 слот для хранения песо. Если не хватает золота, у меня есть для тебя подарок, в размере 10 золотых слитков <a id="training_mess_a" href="#" onclick="go()">[Забрать]</a>';
+  } else if (training_activity == 18) {
+    training_message.innerHTML = 'Наставник: Положи песо на хранение в банк, и как будешь готов, в плавании выбери раздел Перевезти пассажира';
+  } else if (training_activity == 19) {
+    training_message.innerHTML = 'Наставник: Ты перевозишь пассажира. В среднем путь занимает 4-6 минут';
+  }
+  // part_3
+  else if (training_activity == 20) {
+   training_message.innerHTML = 'Наставник: Отлично! Ты доставил пассажира и возвращаещься домой. Твоя награда: 15 золотых слитков <a id="training_mess_a" href="#" onclick="go()">[Забрать]</a>';
+ } else if (training_activity == 21) {
+   training_message.innerHTML = 'Наставник: Как ты уже заметил, за выполнение заданий и за выигранное сражение получаешь рейтинг. Чем больше заработаешь рейтинга за день, тем выше шанс получить награду в виде очков рейтинга, которые нужны для улучшения способностей <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+ } else if (training_activity == 22) {
+   training_message.innerHTML = 'Наставник: Выиграть сражение можно двумя способами. Первый ты уже знаешь, это разнести корпус. Если же корпус вражеского корабля крепче, а орудия гораздо мощнее твоих, то можно попытаться взять корабль противника на абордаж <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+ } else if (training_activity == 23) {
+   training_message.innerHTML = 'Наставник: Для начала нужно обстрелять корабль книппелями, тем самым снизив его скорость. Чтобы пойти на абордаж скорость твоего корабля должна быть больше в 1.3 раза. Твой корабль будет плыть до вражеского 30 секунд. В это время ты должен следить чтобы разница в скоростях не упала ниже 1.3 раза <a id="training_mess_a" href="#" onclick="go()">[Дальше]</a>';
+ } else if (training_activity == 24) {
+   training_message.innerHTML = 'Наставник: Загляни в магазин и закупись книппелями, порохом и оружием. В таверне найми больше абордажников. Теперь иди к алхимику и купи у него Бодрящий ром';
+ } else if (training_activity == 25) {
+   training_message.innerHTML = 'Наставник: Эта настойка пригодится нам при абордаже. Перейди на страницу персонажа и выбери вкладку Настойки. Найди Бодрящий ром и используй его';
+ } else if (training_activity == 26) {
+   training_message.innerHTML = 'Наставник: Твой корабль готов к бою. На абордаж!';
+ } else if (training_activity == 27) {
+   training_message.innerHTML = 'Наставник: И с этим заданием тебе не составило труда справиться. Держи заслуженную награду: 5000 песо <a id="training_mess_a" href="#" onclick="go()">[Забрать]</a>';
+ } else if (training_activity == 28) {
+   training_message.innerHTML = 'Наставник: Твое обучение подходит к концу. Пришло время приобрести более мощное судно. Существуют 3 разновидности судов. Для абордажа подойдет легкое судно с большим количеством команды. Если вы любите обстреливать противника, то выбирайте корабль с большим количеством пушек и прочным корпусом. Также есть универсальные судна, обладающие средними характеристиками. Зайди на верфь и купи Люггер';
+ } else if (training_activity == 29) {
+   training_message.innerHTML = 'Наставник: Я рассказал об основных моментах выживания и покидаю тебя. Успехов, Капитан! <a id="training_mess_a" href="#" onclick="go()">[Закрыть]</a>';
+ }
+
+  function go() {
+      $.ajax({
+        url: '/training',
+        method: "POST",
+        data: {},
+        statusCode: {
+          200: function(){
+            location.reload(true);
+          }
+        }
+      });
+     return false;
+  }
+</script>

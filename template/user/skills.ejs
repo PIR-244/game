@@ -1,0 +1,46 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/skills.css">
+<h3>Навыки</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/metkost.jpg" alt="Меткость">
+  <p><strong>Меткость</strong><br>Увеличивает урон наносимый орудиями<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.marksmanship %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_marksmanship %> из <%= max_number_marksmanship %></span><br>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/zaschita.jpg" alt="Защита">
+  <p><strong>Защита</strong><br>Повышает защиту корабля<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.protection %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_protection %> из <%= max_number_protection %></span><br>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/stoykost.jpg" alt="Стойкость">
+  <p><strong>Стойкость</strong><br>Увеличивает количество жизней команды<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.resistance %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_resistance %> из <%= max_number_resistance %></span><br>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/abordazh.jpg" alt="Абордаж">
+  <p><strong>Абордаж</strong><br>Определяет эффективность команды в абордажных схватках<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.boarding %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_boarding %> из <%= max_number_boarding %></span><br>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/skills/navigatsia.jpg" alt="Навигация">
+  <p><strong>Навигация</strong><br>Повышает скорость и маневренность корабля, а также позволяет управлять
+                                   более массивными судами<br>
+    <span class="span_block_text1">Уровень: <%= user.skills.navigation %></span><span class="span_block_text">
+    Получено опыта: <%= user.skills.number_navigation %> из <%= max_number_navigation %></span><br>
+</div>
+
+<ul class="list_a">
+  <li><a href="/user"><div class="body_div">
+    <span class="body_span"><img src="/images/navi_verch/pers2.png"></span>Персонаж</div></a></li>
+    <li><a href="/user/abilities"><div class="body_div">
+      <span class="body_span"><img src="/images/user/sposobnosti.png"></span>Способности</div></a></li>
+      <li><a href="/user/alchimik"><div class="body_div">
+        <span class="body_span"><img src="/images/user/nastoyki.png"></span>Настойки</div></a></li>
+  <li><a href="/college"><div class="body_div">
+    <span class="body_span1"><img src="/images/city/akademia.png"></span>Мореходный колледж</div></a></li>
+</ul>

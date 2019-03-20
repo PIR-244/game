@@ -1,0 +1,113 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/guns.css">
+<h3>Орудия</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/guns/8funtov.jpg" alt="Пушки 8-фунтовые">
+  <p><strong>Пушки 8-фунтовые</strong><br>
+    <span class="span_block_text1">Урон: x<%= guns[0].damage %></span>
+    <span class="span_block_text">Точность: <%= guns[0].accuracy %></span><br>
+    <span class="span_block_text">Перезарядка: <%= guns[0].recharge %> сек.</span>
+    <span class="span_block_text">Вес: <%= guns[0].weight %></span><br>
+    Количество в трюме: <% if(user.ship.guns.funt_guns == 0) { %><%= user.ship.guns.number_guns %>
+    <% } else { %>0<% } %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= guns[0].price %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_guns" value="0">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: <%= guns[0].sale %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_guns" value="0">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/guns/12funtov.jpg" alt="Пушки 12-фунтовые">
+  <p><strong>Пушки 12-фунтовые</strong><br>
+    <span class="span_block_text1">Урон: x<%= guns[1].damage %></span>
+    <span class="span_block_text">Точность: <%= guns[1].accuracy %></span><br>
+    <span class="span_block_text">Перезарядка: <%= guns[1].recharge %> сек.</span>
+    <span class="span_block_text">Вес: <%= guns[1].weight %></span><br>
+    Количество в трюме: <% if(user.ship.guns.funt_guns == 1) { %><%= user.ship.guns.number_guns %>
+    <% } else { %>0<% } %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= guns[1].price %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_guns" value="1">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: <%= guns[1].sale %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_guns" value="1">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/guns/18funtov.jpg" alt="Пушки 18-фунтовые">
+  <p><strong>Пушки 18-фунтовые</strong><br>
+    <span class="span_block_text1">Урон: x<%= guns[2].damage %></span>
+    <span class="span_block_text">Точность: <%= guns[2].accuracy %></span><br>
+    <span class="span_block_text">Перезарядка: <%= guns[2].recharge %> сек.</span>
+    <span class="span_block_text">Вес: <%= guns[2].weight %></span><br>
+    Количество в трюме: <% if(user.ship.guns.funt_guns == 2) { %><%= user.ship.guns.number_guns %>
+    <% } else { %>0<% } %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= guns[2].price %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_guns" value="2">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: <%= guns[2].sale %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_guns" value="2">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/guns/24funta.jpg" alt="Пушки 24-фунтовые">
+  <p><strong>Пушки 24-фунтовые</strong><br>
+    <span class="span_block_text1">Урон: x<%= guns[3].damage %></span>
+    <span class="span_block_text">Точность: <%= guns[3].accuracy %></span><br>
+    <span class="span_block_text">Перезарядка: <%= guns[3].recharge %> сек.</span>
+    <span class="span_block_text">Вес: <%= guns[3].weight %></span><br>
+    Количество в трюме: <% if(user.ship.guns.funt_guns == 3) { %><%= user.ship.guns.number_guns %>
+    <% } else { %>0<% } %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= guns[3].price %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_guns" value="3">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text">Цена продажи: <%= guns[3].sale %> песо</span><br>
+    <form class="form" action="/verf/guns" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_guns" value="3">
+      <button type="submit" class="button_sell">П</button>
+    </form></div>
+</div>
+
+
+<ul class="list_a">
+<li><a href="/verf"><div class="body_div">
+  <span class="body_span3"><img src="/images/city/verf2.png"></span>Верфь</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

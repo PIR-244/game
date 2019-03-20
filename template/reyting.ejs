@@ -1,0 +1,75 @@
+
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/reyting.css">
+<h3>Рейтинг</h3>
+<p id="info_rewards">Рейтинг обновляется ежедневно. Самые лучшие получают награду в очках рейтинга!<br>
+  У вас рейтинга: <%= user.rating.number_rating %>
+  </p>
+
+<div id="letters_ul" class="pol_tuskl">
+</div>
+
+<div id="button_page">
+    <a class="button_page" id="button_page1" href="/reyting?page=1">1</a>
+    <a class="button_page" id="button_page2" href="/reyting?page=2">2</a>
+    <a class="button_page" id="button_page3" href="/reyting?page=3">3</a>
+</div>
+
+<ul class="list_a">
+  <% if(info != 'rewards') { %>
+  <li><a href="/reyting?info=rewards"><div class="body_div">
+    <span class="body_span"><img src="/images/reyting/info.png"></span>Информация</div></a></li>
+    <% } %>
+</ul>
+
+
+<script type="text/javascript">
+var page = <%- JSON.stringify(page) %>;
+if (page==2) {
+  document.getElementById('button_page2').classList.add('disabled');
+} else if (page==3) {
+  document.getElementById('button_page3').classList.add('disabled');
+} else {
+  document.getElementById('button_page1').classList.add('disabled');
+}
+var poryadok = <%- JSON.stringify(poryadok) %>;
+var list = <%- JSON.stringify(list) %>;
+if (list <= 20) {
+  document.getElementById('button_page3').classList.add('out_no');
+}
+if (list <= 10) {
+  document.getElementById('button_page2').classList.add('out_no');
+  document.getElementById('button_page1').classList.add('out_no');
+  document.getElementById('button_page').style.width = '0px';
+  document.getElementById('button_page').style.height = '0px';
+  document.getElementById('button_page').style.padding = '0px';
+}
+
+
+var letters_ul = document.getElementById('letters_ul');
+if (poryadok[0] != 0) {
+  for (var i = 0; i < poryadok.length; i++) {
+    var div = document.createElement('div');
+    letters_ul.appendChild(div);
+    div.classList.add('body_div1');
+
+  div.innerHTML = '<img class="img_shop" src="/images/avatarky/'+poryadok[i].avatar_index+'.jpg" alt=""><div class="div_display"><a href="/user/info?user='+poryadok[i].username+'">'+poryadok[i].username+
+                '</a><div class="div_text1">Место: '+poryadok[i].rating.rating+'<br>Количество рейтинга: '+poryadok[i].rating.number_rating+'</div></div>';
+  }
+
+  }
+  else {
+    letters_ul.innerHTML = '<div class="div_text">Рейтинг не определен</div>';
+  }
+
+  var info = <%- JSON.stringify(info) %>;
+  if (info == 'rewards') {
+    document.getElementById('info_rewards').innerHTML = 'Рейтинг обновляется ежедневно. '+
+    'Самые лучшие получают награду в очках рейтинга!<br>'+
+    ' 1 место: 30 очков рейтинга<br> 2 место: 20 очков рейтинга'+
+    '<br> 3 место: 15 очков рейтинга'+'<br> 4-10 места: 10 очков рейтинга'
+    +'<br> 11-30 места: 5 очков рейтинга'+'<br> 40 рейтинга: 2 очка рейтинга'+
+    '<br> 15 рейтинга: 1 очко рейтинга<br>У вас рейтинга: <%= user.rating.number_rating %>';
+  }
+</script>

@@ -1,0 +1,60 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/alchimik.css">
+<h3>Лавка алхимика</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/alchimik/intellekt.jpg" alt="#">
+  <p><strong>Снадобье интеллекта</strong><br>Удваивает получаемый опыт<br>
+      Действие: 12 часов</p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: 3 золотых слитка</span>
+    <form class="form" action="alchimik/confirmation" method="get">
+      <input type="number" class="input" name="number_potion">
+      <input type="hidden" name="value_potion" value="0">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/alchimik/rom.jpg" alt="#">
+  <p><strong>Бодрящий ром</strong><br>Повышает навык абордажа на 50%<br>
+      Действие: 4 часа</p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: 8 золотых слитков</span>
+    <form class="form" action="alchimik/confirmation" method="get">
+      <input type="number" class="input" name="number_potion">
+      <input type="hidden" name="value_potion" value="1">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/alchimik/remont.jpg" alt="#">
+  <p><strong>Бутыль ремонтника</strong><br>Починка корабля идет в 1.5 раза быстрее<br>
+      Действие: 12 часов</p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: 5 золотых слитков</span>
+    <form class="form" action="alchimik/confirmation" method="get">
+      <input type="number" class="input" name="number_potion">
+      <input type="hidden" name="value_potion" value="2">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/alchimik/metkost.jpg" alt="#">
+  <p><strong>Напиток меткости</strong><br>Повышает меткость на 50%<br>
+      Действие: 4 часа</p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена: 9 золотых слитков</span>
+    <form class="form" action="alchimik/confirmation" method="get">
+      <input type="number" class="input" name="number_potion">
+      <input type="hidden" name="value_potion" value="3">
+      <button type="submit" class="button_buy">К</button>
+    </form></div>
+</div>
+
+<ul class="list_a">
+  <li><a href="/city"><div class="body_div">
+    <span class="body_span"><img src="/images/frontpage/gorod1.png"></span>Город</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

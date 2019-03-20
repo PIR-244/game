@@ -1,0 +1,29 @@
+<% if(user) { %>
+<div id="naviverkh_verh"></div>
+<nav id="hiNavigation" role="navigation">
+    <a href="/pochta/last" title="Почта"><span id="hi_span_pochta2"><img src="/images/navi_verch/<%= message_activ %>.png" alt="Почта"></span></a>
+    <a href="/user" title="Персонаж"><span class="hi_span"><img src="/images/navi_verch/pers2.png" alt="Персонаж"></span><strong><%=user.get('username')%></strong></a>
+    <a href="/gold" title="Золотые слитки"><span class="hi_span"><img src="/images/navi_verch/zoloto2.png" alt="Золотые слитки"></span><%=user.gold_bars%></a>
+      <a href="/city" title="Песо"><span class="hi_span"><img src="/images/navi_verch/peso.png" alt="Песо"></span><%=user.pesos%></a>
+    <a href="/user/ship" title="Корпус корабля"><span id="hi_span_korpus"><img src="/images/navi_verch/korpus1.png" alt="Корпус"></span><%=user.ship.hull%></a>
+    <a href="/user/ship" title="Паруса"><span id="hi_span_parus"><img src="/images/navi_verch/parusa1.png" alt="Паруса"></span><%=user.ship.sails%></a>
+      <a href="/user/ship" title="Команда корабля"><span id="hi_span_team"><img src="/images/navi_verch/komanda1.png" alt="Команда"></span><%=user.ship.team.sailors+user.ship.team.boarders+user.ship.team.gunners%></a>
+      <script language="javascript" type="text/javascript">
+      var last_action_user = <%- JSON.stringify(user.last_action) %>;
+var d = new Date(last_action_user);
+var hours = '';
+if(d.getHours() < 10)
+    hours = '0';
+var minutes = '';
+if(d.getMinutes() < 10)
+    minutes = '0';
+var seconds = '';
+if(d.getSeconds() < 10)
+    seconds = '0';
+var TODAY = hours + d.getHours()+ "."+ minutes + d.getMinutes() + "." + seconds + d.getSeconds();
+</script>
+  <a href="/plavanie" title="Время"><span class="hi_span"><img src="/images/navi_verch/vremya.png" alt="Время"></span><script language="javascript" type="text/javascript">document.write(TODAY);</script>
+  </a>
+</nav>
+<div id="naviverkh_niz"></div>
+<% } %>

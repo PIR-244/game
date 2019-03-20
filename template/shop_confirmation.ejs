@@ -1,0 +1,41 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы дейтсвительно хотите <%=buy_sell_rus%> товар "<%=product_name%>" в количестве <%=number_products*number_pack%>
+    штук за <%=number_products*price%> песо?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="/shop"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go() {
+ var buy_sell = <%- JSON.stringify(buy_sell) %>;
+ var number_products = <%- JSON.stringify(number_products) %>;
+ var value_products = <%- JSON.stringify(value_products) %>;
+    $.ajax({
+      url: '/shop/confirmation',
+      method: "POST",
+      data: {buy_sell: buy_sell, number_products:number_products, value_products:value_products},
+      statusCode: {
+        200: function(err_status_low){
+          err_status_low = JSON.parse(err_status_low);
+          var href_window = '';
+          if (value_products>=0&&value_products<=4) {
+            href_window = "/shop?page=1";
+          }else {
+            href_window = "/shop?page=2";
+          }
+          href_window = href_window + '&err_status_low=' + err_status_low;
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+
+</script>

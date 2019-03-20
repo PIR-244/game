@@ -1,0 +1,77 @@
+h3 {
+  padding: 3px 4.2% 0px 4.2%;
+  color: #302314;
+  text-align: center;
+}
+.div_zagolovok{
+  font-size: 16px;
+  color: #946012;
+  text-align: center;
+  font-weight: 510;
+  margin-bottom: 5px;
+  margin-top: 8px;
+}
+.img_shop1{
+    margin-left: 4.2%;
+    margin-top: 10px;
+}
+p{
+  font-size: 15px;
+  color: #302314;
+}
+.img_display{
+
+
+  display: flow-root;
+}
+.img_shop{
+
+    position: relative;
+    top: 3px;
+    display: inline;
+}
+.img_shop3{
+
+    position: relative;
+    top: 2px;
+    display: inline;
+}
+.img_shop2{
+
+    position: relative;
+    top: 4px;
+    display: inline;
+}
+.ul_li {
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 4.2% 4px 4.2%;
+}
+
+.list_a{
+  margin-top: 10px;
+}
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}
+.body_span1{
+  position: relative;
+  margin-right: 3px;
+  top: 2px;
+}
+.body_span1 img{
+  width: 19px;
+}
+.body_span2{
+  position: relative;
+  margin-right: 3px;
+  top: 0px;
+}
+.body_span2 img{
+  width: 19px;
+}

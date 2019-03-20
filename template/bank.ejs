@@ -1,0 +1,129 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/bank.css">
+<h3>Банк</h3>
+<div class="ul_li">
+  <p><strong>Хранилище</strong><br>
+    Собираешься в опасное плавание? Положи свои деньги в хранилище и никто не сможет их у тебя отнять!<br>
+    При вложении песо в хранилище, банк забирает 10% от вложенной суммы</p>
+    <div class="block_div_shop" id="block_div_shop1"><span class="span_shop_text" id="span_shop_text1">Слот 1:</span>
+    <form class="form" id="form1" action="bank/confirmation" method="get">
+      <input type="number" class="input" id="input1" name="number_pesos">
+      <input type="hidden" name="value_slot" value="0">
+      <button type="submit" class="button" id="button1">П</button>
+    </form></div>
+    <div class="block_div_shop" id="block_div_shop2"><span class="span_shop_text" id="span_shop_text2">Слот 2:</span>
+    <form class="form" id="form2" action="bank/confirmation" method="get">
+      <input type="number" class="input" id="input2" name="number_pesos">
+      <input type="hidden" name="value_slot" value="1">
+      <button type="submit" class="button" id="button2">П</button>
+    </form></div>
+    <div class="block_div_shop" id="block_div_shop3"><span class="span_shop_text" id="span_shop_text3">Слот 3:</span>
+    <form class="form" id="form3" action="bank/confirmation" method="get">
+      <input type="number" class="input" id="input3" name="number_pesos">
+      <input type="hidden" name="value_slot" value="2">
+      <button type="submit" class="button" id="button3">П</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><strong>Займ</strong><br>
+    Если ты на грани разорения, то тебе становится доступным беспроцентный займ в количестве
+     зависящем от ранга твоего корабля.</p>
+    <% if(credit_true == 1) { %>
+    <div class="block_div_shop">
+    <span class="span_shop_text">Доступно для займа: <%=number_credit%> песо</span>
+    <form class="form" action="bank/confirmation" method="get">
+      <input type="hidden" name="value_slot" value="3">
+      <button type="submit" id="button">П</button>
+    </form></div>
+    <% } %>
+    <% if(user.bank.credit.number_credit > 0) { %>
+      <div class="block_div_shop">
+      <span class="span_shop_text">Ваш долг: <%=user.bank.credit.number_credit%> песо</span>
+      <form class="form" action="bank/confirmation" method="get">
+        <input type="hidden" name="value_slot" value="4">
+        <button type="submit" id="button4">П</button>
+      </form></div>
+    <% } %>
+</div>
+
+<ul class="list_a">
+<li><a href="/city"><div class="body_div">
+  <span class="body_span"><img src="/images/frontpage/gorod1.png"></span>Город</div></a></li>
+</ul>
+
+<script type="text/javascript">
+if(<%=user.bank.storage.slot1.number_pesos%> > 0) {
+     document.getElementById('input1').type = "hidden";
+     document.getElementById('button1').style.backgroundImage = 'url(/images/SnyatKNP.jpg)';
+     document.getElementById('button1').style.backgroundSize = '98px 24px';
+     document.getElementById('span_shop_text1').innerHTML = 'Вложено: <%=user.bank.storage.slot1.number_pesos%> песо';
+    }
+if(<%=user.bank.storage.slot2.number_pesos%> > 0) {
+      document.getElementById('input2').type = "hidden";
+      document.getElementById('button2').style.backgroundImage = 'url(/images/SnyatKNP.jpg)';
+      document.getElementById('button2').style.backgroundSize = '98px 24px';
+      document.getElementById('span_shop_text2').innerHTML = 'Вложено: <%=user.bank.storage.slot2.number_pesos%> песо';
+    }
+if(<%=user.bank.storage.slot3.number_pesos%> > 0) {
+      document.getElementById('input3').type = "hidden";
+      document.getElementById('button3').style.backgroundImage = 'url(/images/SnyatKNP.jpg)';
+      document.getElementById('button3').style.backgroundSize = '98px 24px';
+      document.getElementById('span_shop_text3').innerHTML = 'Вложено: <%=user.bank.storage.slot3.number_pesos%> песо';
+      }
+
+if(<%=user.bank.storage.slot1.activity%> == 0) {
+  document.getElementById('input1').type = "hidden";
+  document.getElementById('button1').style.backgroundImage = 'url(/images/OtkrytKNP.jpg)';
+  document.getElementById('button1').style.backgroundSize = '98px 24px';
+  document.getElementById('span_shop_text1').innerHTML = 'Цена открытия слота: 15 золотых слитков';
+  document.getElementById('form1').style.display = 'block';
+  document.getElementById('form1').style.textAlign = 'center';
+
+  document.getElementById('input2').type = "hidden";
+  document.getElementById('button2').style.backgroundSize = '0px 0px';
+  document.getElementById('span_shop_text2').innerHTML = '';
+  document.getElementById('span_shop_text2').style.paddingRight = '0px';
+  document.getElementById('form2').style.height = '0px';
+  document.getElementById('block_div_shop2').style.marginTop = '0px';
+  document.getElementById('form2').style.display = 'block';
+  document.getElementById('input3').type = "hidden";
+  document.getElementById('button3').style.backgroundSize = '0px 0px';
+  document.getElementById('span_shop_text3').innerHTML = '';
+  document.getElementById('span_shop_text3').style.paddingRight = '0px';
+  document.getElementById('form3').style.height = '0px';
+  document.getElementById('block_div_shop3').style.marginTop = '0px';
+  document.getElementById('form3').style.display = 'block';
+}
+else if(<%=user.bank.storage.slot2.activity%> == 0) {
+  document.getElementById('input2').type = "hidden";
+  document.getElementById('button2').style.backgroundImage = 'url(/images/OtkrytKNP.jpg)';
+  document.getElementById('button2').style.backgroundSize = '98px 24px';
+  document.getElementById('span_shop_text2').innerHTML = 'Цена открытия слота: 50 золотых слитков';
+  document.getElementById('form2').style.display = 'block';
+  document.getElementById('form2').style.textAlign = 'center';
+
+  document.getElementById('input3').type = "hidden";
+  document.getElementById('button3').style.backgroundSize = '0px 0px';
+  document.getElementById('span_shop_text3').innerHTML = '';
+  document.getElementById('span_shop_text3').style.paddingRight = '0px';
+  document.getElementById('form3').style.height = '0px';
+  document.getElementById('block_div_shop3').style.marginTop = '0px';
+  document.getElementById('form3').style.display = 'block';
+ }
+else if(<%=user.bank.storage.slot3.activity%> == 0) {
+   document.getElementById('input3').type = "hidden";
+   document.getElementById('button3').style.backgroundImage = 'url(/images/OtkrytKNP.jpg)';
+   document.getElementById('button3').style.backgroundSize = '98px 24px';
+   document.getElementById('span_shop_text3').innerHTML = 'Цена открытия слота: 150 золотых слитков';
+   document.getElementById('form3').style.display = 'block';
+   document.getElementById('form3').style.textAlign = 'center';
+  }
+</script>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

@@ -1,0 +1,64 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/plavanie/waiting_confirmation.css">
+  <h3>Плавание</h3>
+
+  <table id="plavanie_table">
+    <tbody>
+      <tr>
+        <td class="info_plavanie"><p><a href="/user/info?user=<%= user.username %>"><%= user.username %></a></td>
+        <td class="info_image"></td>
+        <td class="info_plavanie"><p><span id="zaglav_p"></span></p></td>
+      </tr>
+      <tr>
+        <td class="info_plavanie"><img class="img_shop1" src="/images/avatarky/<%= user.avatar_index %>_mini.jpg" alt=""></td>
+        <td class="info_image"></td>
+        <td class="info_plavanie"><img class="img_shop1" src="/images/avatarky/<%= user.boti.avatar_index %>_mini.jpg" alt=""></td>
+      </tr>
+      <tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.hull %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/korpus.png" alt="Корпус"></td>
+        <td class="info_plavanie"><%= user.boti.ship.hull %></td>
+      </tr>
+      <tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.sails %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/parusa.png" alt="Паруса"></td>
+        <td class="info_plavanie"><%= user.boti.ship.sails %></td>
+      </tr><tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.team.sailors+user.ship.team.boarders+user.ship.team.gunners %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/matrosy.png" alt="Команда"></td>
+        <td class="info_plavanie"><%= user.boti.ship.team.sailors+user.boti.ship.team.boarders+user.boti.ship.team.gunners %></td>
+      </tr><tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.speed %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/skorost.png" alt="Скорость"></td>
+        <td class="info_plavanie"><%= user.boti.ship.speed %></td>
+      </tr><tr class="block_plavanie">
+        <td class="info_plavanie"><%= user.ship.mobility %></td>
+        <td class="info_image"><img class="img_shop" src="/images/user/ship/manevrennost.png" alt="Маневренность">
+        <td class="info_plavanie"><%= user.boti.ship.mobility %></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="block_div">
+    <form class="form1" action="/plavanie/assignments" method="post">
+      <input type="hidden" name="away" value="0">
+      <button type="submit" class="button1">Н</button>
+    </form>
+  </div>
+<ul class="list_a">
+  <li><form class="form" action="/plavanie/assignments" method="post">
+    <input type="hidden" name="away" value="1">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span"><img src="/images/plavanie/prichal.png"></span>Вернуться домой</div></button>
+  </form></li>
+</ul>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+  var enemy_name = <%- JSON.stringify(user.boti.username) %>;
+    document.getElementById('zaglav_p').innerHTML = enemy_name;
+
+</script>

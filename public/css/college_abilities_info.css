@@ -1,0 +1,81 @@
+h3 {
+  padding: 3px 4.2% 5px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 15px;
+  margin-top: 3px;
+  padding: 0 4.2% 7px 4.2%;
+  color: #302314;
+  margin-left: 64px;
+}
+.img_display{
+
+
+  display: flow-root;
+}
+.img_shop{
+  margin-top: 5px;
+  margin-right: 8px;
+  margin-left: 4.2%;
+float: left;
+font-size: 10px;
+font-style: italic;
+margin-bottom: 5px;
+}
+.span_block_text{
+  display: inline-block;
+  margin-right: 3.2%;
+  font-size: 14px;
+  color: #302314;
+  font-weight: 560;
+}
+.span_block_text1{
+  display: inline-block;
+  margin-right: 2.5%;
+  font-size: 14px;
+  color: #302314;
+}
+.span_shop_text{
+  font-size: 14px;
+  color: #302314;
+}
+.form{
+height: 24px;
+
+  display: inline-block;
+
+}
+.button_buy{
+  border: 0px;
+ background: transparent;
+ color: #563711;
+ font-size: 13px;
+ cursor: pointer;
+}
+.button_buy:hover{
+ color: #946012;
+}
+
+.ul_li {
+  background-image: url(/images/8.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 0 4px 4.2%;
+}
+.block_div_shop{
+  display: block;
+  padding-right: 4.2%;
+}
+
+.list_a{
+  margin-top: 10px;
+}
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}

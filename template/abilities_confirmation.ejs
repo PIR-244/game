@@ -1,0 +1,42 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы действительно хотите купить способность "<%=name_abilities%>" <%=+number_abilities+1%> уровня
+   за <%=price%>?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="#" onclick="go_no()"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go() {
+ var value_abilities = <%- JSON.stringify(value_abilities) %>;
+ var number_abilities = <%- JSON.stringify(number_abilities) %>;
+ var value_money = <%- JSON.stringify(value_money) %>;
+ var href_window = '/college/abilities/info?value_abilities='+value_abilities;
+    $.ajax({
+      url: '/college/abilities/confirmation',
+      method: "POST",
+      data: {value_abilities:value_abilities, number_abilities:number_abilities, value_money:value_money},
+      statusCode: {
+        200: function(err_status_low){
+          err_status_low = JSON.parse(err_status_low);
+          href_window = href_window + '&err_status_low=' + err_status_low;
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+function go_no() {
+ var value_abilities = <%- JSON.stringify(value_abilities) %>;
+ var href_window = '/college/abilities/info?value_abilities='+value_abilities;
+window.location.href = href_window;
+   return false;
+}
+
+</script>

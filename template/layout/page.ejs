@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Корсары</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/app.css">
+    <script src="/vendor/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/vendor/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+  </head>
+  <body>
+    <div id="content">
+    <div id="shapka_block"><a href="/"><div id="shapka"></div></a></div>
+    <section class="container">
+      <%-partial('../partials/warning')%>
+      <%-partial('../partials/hiNavigation')%>
+      <div id="body"><%-body -%></div>
+      <%-partial('../partials/downNavigation')%>
+    <div id="logout">
+      <%-partial('../partials/logoutNavigation')%>
+    </div>
+     </section>
+      </div>
+  </body>
+</html>

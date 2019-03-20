@@ -1,0 +1,46 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/college_abilities.css">
+<h3>Корабельные способности</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/pochinka.jpg" alt="#">
+  <p><strong>Быстрая починка</strong><br>Скорость починки корабля увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="quick_fix">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/skorost.jpg" alt="#">
+  <p><strong>Увеличенная скорость корабля</strong><br>Скорость корабля увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="speed_ship">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/manevrennost.jpg" alt="#">
+  <p><strong>Увеличенная маневренность корабля</strong><br>Маневренность корабля увеличивается</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="maneuverability_ship">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/abilities/opyt.jpg" alt="#">
+  <p><strong>Ученый</strong><br>Позволяет в плавании получать больше опыта</p>
+   <div class="block_div_shop">
+    <form class="form" action="/college/abilities/info" method="get">
+    <input type="hidden" name="value_abilities" value="learnbility">
+    <button type="submit" class="button_buy">[Подробнее]</button>
+  </form></div>
+</div>
+
+
+<ul class="list_a">
+  <li><a href="/college"><div class="body_div">
+    <span class="body_span"><img src="/images/city/akademia.png"></span>Мореходный колледж</div></a></li>
+</ul>

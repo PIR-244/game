@@ -1,0 +1,88 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/abilities.css">
+  <h3>Способности</h3>
+  <div id="letters_activity_abilities">
+  </div>
+  <p>Доступные</p>
+  <ul id="letters_ul">
+  </ul>
+
+<ul class="list_a">
+    <li><a href="/user"><div class="body_div">
+      <span class="body_span"><img src="/images/navi_verch/pers2.png"></span>Персонаж</div></a></li>
+      <li><a href="/user/skills"><div class="body_div">
+        <span class="body_span"><img src="/images/college/navyki.png"></span>Навыки</div></a></li>
+        <li><a href="/user/alchimik"><div class="body_div">
+          <span class="body_span"><img src="/images/user/nastoyki.png"></span>Настойки</div></a></li>
+          <li><a href="/college"><div class="body_div">
+    <span class="body_span1"><img src="/images/city/akademia.png"></span>Мореходный колледж</div></a></li>
+</ul>
+
+<script type="text/javascript">
+
+var ability_message = <%- JSON.stringify(ability_message) %>;
+var value_img = <%- JSON.stringify(value_img) %>;
+var value_nadet = <%- JSON.stringify(value_nadet) %>;
+var zaglav_message = <%- JSON.stringify(zaglav_message) %>;
+var activity = <%- JSON.stringify(user.abilities) %>;
+
+var letters_ul = document.getElementById('letters_ul');
+if (value_nadet[0]) {
+  letters_ul.style.marginBottom = '7px';
+  for (var i = 0; i < value_nadet.length; i++) {
+    var li = document.createElement('li');
+    letters_ul.appendChild(li);
+    li.style.minHeight = '66px';
+    li.style.padding = '5px 3.2% 4px 4.2%';
+    var form = '';
+    if (activity[value_nadet[i]].activity != 1) {
+      form = '<div class="block_div_shop"><form class="form" action="/user/abilities" method="post">'+
+      '<input type="hidden" name="value_nadet" value="'+value_nadet[i]+'">'+
+      '<button type="submit" class="button">[Активировать]</button>'+
+    '</form></div>';
+    }
+    li.innerHTML = '<img class="img_shop" src="/images/abilities/'+value_img[i]+'.jpg" alt="#"><div class="image_div">'+
+      '<span class="span_block_text"><strong>'+zaglav_message[i]+'</strong><br>'+ability_message[i]+'</span></div>'+
+       form;
+  }
+} else {
+  letters_ul.innerHTML = '<span class="span_text">У вас нет способностей!</span>';
+  letters_ul.style.paddingBottom = '13px';
+}
+
+
+var names_images = <%- JSON.stringify(names_images) %>;
+var alt_images = <%- JSON.stringify(alt_images) %>;
+var value_snyat = <%- JSON.stringify(value_snyat) %>;
+
+var letters_activity_abilities = document.getElementById('letters_activity_abilities');
+if (value_snyat[0]) {
+  letters_activity_abilities.innerHTML = '<p>Активные</p>';
+  letters_activity_abilities.style.marginBottom = '7px';
+  for (var i = 0; i < value_snyat.length; i++) {
+    var div = document.createElement('div');
+    letters_activity_abilities.appendChild(div);
+    div.style.padding = '0px 7px 10px 8px';
+    div.className = 'block_div';
+ div.innerHTML = '<img class="img_shop_activity" src="/images/abilities/'+names_images[i]+'.jpg"'+
+        ' alt="'+alt_images[i]+'" title="'+alt_images[i]+'">'+
+        '<form class="form_activity" action="/user/abilities" method="post">'+
+        '<input type="hidden" name="value_snyat" value="'+value_snyat[i]+'">'+
+        '<button type="submit" class="button">[Убрать]</button>'+
+      '</form>';
+  }
+} else {
+  if (value_nadet[0]) {
+    letters_activity_abilities.innerHTML = '<p>Активные</p><span class="span_text">Нет активных способностей!</span>';
+    letters_activity_abilities.style.paddingBottom = '13px';
+  }
+}
+</script>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

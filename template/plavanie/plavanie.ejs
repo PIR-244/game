@@ -1,0 +1,51 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/plavanie/plavanie.css">
+  <h3>Плавание</h3>
+  <p><img src="/images/plavanie/plavanie.jpg" alt="."><br>Испытай свой корабль на прочность! На абордаж!</p>
+<div class="div_zagolovok">Поиск противников</div>
+
+<ul class="list_a">
+  <li><form class="form" action="/plavanie/battle" method="post">
+    <input type="hidden" name="enemy" value="junior">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span1"><img src="/images/plavanie/mel.png"></span>Младшие</div></button>
+  </form></li>
+  <li><form class="form" action="/plavanie/battle" method="post">
+    <input type="hidden" name="enemy" value="equal">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span"><img src="/images/plavanie/rov.png"></span>Ровня</div></button>
+  </form></li>
+  <li><form class="form" action="/plavanie/battle" method="post">
+    <input type="hidden" name="enemy" value="senior">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span2"><img src="/images/plavanie/star.png"></span>Старшие</div></button>
+  </form></li>
+  <% if(user.assignments.shop.activity == 1 || user.assignments.shop.activity == 4) { %>
+  <li><form class="form" action="/plavanie/assignments" method="post">
+    <input type="hidden" name="assignments" value="shop">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span3"><img src="/images/plavanie/gruz.png"></span>Доставить груз</div></button>
+  </form></li>
+  <% } %>
+  <% if(user.assignments.tavern.activity == 1 || user.assignments.tavern.activity == 4) { %>
+  <li><form class="form" action="/plavanie/assignments" method="post">
+    <input type="hidden" name="assignments" value="tavern">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span1"><img src="/images/plavanie/passazhir.png"></span>Перевезти пассажира</div></button>
+  </form></li>
+  <% } %>
+  <% if(user.assignments.residence.activity == 1) { %>
+  <li><form class="form" action="/plavanie/assignments" method="post">
+    <input type="hidden" name="assignments" value="residence">
+    <button type="submit" class="button"><div class="body_div">
+      <span class="body_span1"><img src="/images/plavanie/iskat_korabl.png"></span>Уничтожить пирата</div></button>
+  </form></li>
+  <% } %>
+</ul>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

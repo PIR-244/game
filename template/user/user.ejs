@@ -1,0 +1,77 @@
+<% layout('../layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/user/user.css">
+<div class="img_display">
+  <h3>Персонаж</h3>
+  <img class="img_shop1" src="/images/avatarky/<%= user.avatar_index %>.jpg" alt="">
+</div>
+<div class="div_zagolovok">Навыки</div>
+<div class="ul_li">
+  <p><img class="img_shop" src="/images/user/metkost.png" alt="">
+    Меткость: <%= user.skills.marksmanship %><br>
+    <img class="img_shop" src="/images/user/zaschita.png" alt="">
+  Защита: <%= user.skills.protection %><br>
+  <img class="img_shop" src="/images/user/stoykost.png" alt="">
+  Стойкость: <%= user.skills.resistance %><br>
+  <img class="img_shop" src="/images/user/abordazh.png" alt="">
+  Абордаж: <%= user.skills.boarding %><br>
+  <img class="img_shop" src="/images/user/navigatsia.png" alt="">
+  Навигация: <%= user.skills.navigation %>
+  </p>
+</div>
+  <div class="div_zagolovok">Статистика</div>
+<div class="ul_li">
+  <p><img class="img_shop3" src="/images/user/ochki_reytinga.png" alt="">
+    Очки рейтинга: <%= user.point_rating %><br>
+    <img class="img_shop" src="/images/user/pobed.png" alt="">
+    Победы: <%= user.statistics.victories %><br>
+    <img class="img_shop" src="/images/user/porazhenie.png" alt="">
+  Поражения: <%= user.statistics.defeats %><br>
+  <img class="img_shop" src="/images/user/nagrableno.png" alt="">
+  Награбил: <%= user.statistics.robbed %> песо<br>
+  <img class="img_shop" src="/images/user/poteryal.png" alt="">
+  Потерял: <%= user.statistics.lost %> песо<br>
+  <img class="img_shop3" src="/images/user/karavan2.png" alt="">
+  Ограблено караванов: <%= user.statistics.looted_caravans %>
+  </p>
+</div>
+<div class="div_zagolovok" id="effects"></div>
+<div id="letters_effects">
+</div>
+
+<ul class="list_a">
+  <li><a href="/user/ship"><div class="body_div">
+    <span class="body_span1"><img src="/images/navi_niz/korabl.png"></span>Корабль</div></a></li>
+  <li><a href="/user/skills"><div class="body_div">
+    <span class="body_span"><img src="/images/college/navyki.png"></span>Навыки</div></a></li>
+    <li><a href="/user/abilities"><div class="body_div">
+      <span class="body_span"><img src="/images/user/sposobnosti.png"></span>Способности</div></a></li>
+      <li><a href="/user/alchimik"><div class="body_div">
+        <span class="body_span"><img src="/images/user/nastoyki.png"></span>Настойки</div></a></li>
+          <li><a href="/user/avatar"><div class="body_div">
+            <span class="body_span"><img src="/images/user/avatar.png"></span>Сменить аватар</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var names_images = <%- JSON.stringify(names_images) %>;
+var alt_images = <%- JSON.stringify(alt_images) %>;
+if (alt_images[0]) {
+  document.getElementById('effects').innerHTML = 'Эффекты';
+  document.getElementById('effects').style.marginTop = '4px';
+  var letters_effects = document.getElementById('letters_effects');
+  letters_effects.style.marginBottom = '7px';
+  for (var i = 0; i < alt_images.length; i++) {
+    var div = document.createElement('div');
+    letters_effects.appendChild(div);
+    div.style.padding = '0px 15px 10px 0px';
+    div.className = 'block_div';
+    var src = 'abilities';
+    if (alt_images[i] == 'Снадобье интеллекта' || alt_images[i] == 'Бодрящий ром' ||
+        alt_images[i] == 'Бутыль ремонтника' || alt_images[i] == 'Напиток меткости') {
+      src = 'alchimik';
+    }
+ div.innerHTML = '<img class="img_shop_activity" src="/images/'+src+'/'+names_images[i]+'.jpg"'+
+        ' alt="'+alt_images[i]+'" title="'+alt_images[i]+'">';
+  }
+}
+</script>

@@ -1,0 +1,76 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/tavern.css">
+<h3>Таверна</h3>
+<div class="ul_li">
+  <img class="img_shop" src="/images/tavern/matrosy.jpg" alt="Матросы">
+  <p><strong>Матросы</strong><br>Обучены вязать узлы и ставить паруса,
+    за счет чего увеличивают скорость и маневренность корабля.<br>
+    Матросов на корабле: <%= user.ship.team.sailors %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена найма: 12 песо</span><br>
+    <form class="form" action="tavern" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_team" value="0">
+      <button type="submit" class="button_buy">Н</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text"></span><br>
+    <form class="form" action="tavern" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_team" value="0">
+      <button type="submit" class="button_sell">У</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/tavern/abordazhniki.jpg" alt="Абордажники">
+  <p><strong>Абордажники</strong><br>Превосходны в захвате вражеского судна.
+     Обладают наибольшим уроном при абордаже.<br>
+    Абордажников на корабле: <%= user.ship.team.boarders %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена найма: 16 песо</span><br>
+    <form class="form" action="tavern" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_team" value="1">
+      <button type="submit" class="button_buy">Н</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text"></span><br>
+    <form class="form" action="tavern" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_team" value="1">
+      <button type="submit" class="button_sell">У</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <img class="img_shop" src="/images/tavern/kanoniry.jpg" alt="Канониры">
+  <p><strong>Канониры</strong><br>Подготовлены специально для стрельбы из пушек и их обслуживания.
+    Значительно повышают скорость перезарядки и уменьшают шансы взрыва орудий.<br>
+    Канониров на корабле: <%= user.ship.team.gunners %><br></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена найма: 18 песо</span><br>
+    <form class="form" action="tavern" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="buy">
+      <input type="hidden" name="value_team" value="2">
+      <button type="submit" class="button_buy">Н</button>
+    </form></div>
+    <div class="block_div_shop"><span class="span_shop_text"></span><br>
+    <form class="form" action="tavern" method="post">
+      <input type="number" class="input" name="number">
+      <input type="hidden" name="buy_sell" value="sell">
+      <input type="hidden" name="value_team" value="2">
+      <button type="submit" class="button_sell">У</button>
+    </form></div>
+</div>
+
+<ul class="list_a">
+  <li><a href="/city"><div class="body_div">
+    <span class="body_span"><img src="/images/frontpage/gorod1.png"></span>Город</div></a></li>
+</ul>
+
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>

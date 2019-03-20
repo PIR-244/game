@@ -1,0 +1,35 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы действительно хотите купить зелье "<%=name_potion%>" в количестве <%=number_potion%>
+  за <%=price%> золотых слитков?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="/alchimik"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go() {
+ var value_potion = <%- JSON.stringify(value_potion) %>;
+ var number_potion = <%- JSON.stringify(number_potion) %>;
+ var href_window = '/alchimik';
+    $.ajax({
+      url: '/alchimik/confirmation',
+      method: "POST",
+      data: {value_potion:value_potion, number_potion:number_potion},
+      statusCode: {
+        200: function(err_status_low){
+          err_status_low = JSON.parse(err_status_low);
+          href_window = href_window + '?err_status_low=' + err_status_low;
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+
+</script>

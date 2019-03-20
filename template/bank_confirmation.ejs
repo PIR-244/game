@@ -1,0 +1,34 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/confirmation.css">
+<h3>Подтверждение</h3>
+<p>Вы подтверждаете что хотите <%=verificy_message%>?</p>
+<a href="#" onclick="go()"><div class="body_div">
+  Да
+</div></a>
+<a href="/bank"><div class="body_div">
+  Нет
+</div></a>
+
+
+<script type="text/javascript">
+function go() {
+ var value_slot = <%- JSON.stringify(value_slot) %>;
+ var number_pesos = <%- JSON.stringify(number_pesos) %>;
+ var href_window = '/bank';
+    $.ajax({
+      url: '/bank/confirmation',
+      method: "POST",
+      data: {value_slot:value_slot, number_pesos:number_pesos},
+      statusCode: {
+        200: function(err_status_low){
+          err_status_low = JSON.parse(err_status_low);
+          href_window = href_window + '?err_status_low=' + err_status_low;
+          window.location.href = href_window;
+        }
+      }
+    });
+   return false;
+}
+
+</script>

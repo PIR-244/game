@@ -1,0 +1,86 @@
+h3 {
+  text-align:center;
+  padding: 0 4.2% 10px 4.2%;
+  color: #302314;
+}
+p{
+  font-size: 14px;
+  margin-top: 3px;
+  padding-right: 4.2%;
+  color: #302314;
+}
+
+.ul_li {
+  background-image: url(/images/8.png);
+  background-repeat: no-repeat;
+background-size: 100% 1px;
+padding: 5px 0 4px 4.2%;
+}
+
+.block_div_shop{
+
+  padding-right: 4.2%;
+  margin-top: 5px;
+}
+
+.span_shop_text{
+  padding-right: 5px;
+  font-size: 14px;
+  color: #302314;
+}
+.form{
+  display: inline-block;
+height: 24px;
+}
+
+.button{
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/vlozhitKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ cursor: pointer;
+}
+
+.input{
+  border: 0px;
+  width: 45px;
+  height: 18px;
+  border: 0px;
+}
+#button{
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/ZanyatKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ cursor: pointer;
+}
+
+#button4{
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/OtdatKNP.jpg);
+background-size: 98px 24px;
+ height: 24px;
+ width: 98px;
+ color: transparent;
+ cursor: pointer;
+}
+
+.list_a{
+  margin-top: 10px;
+}
+
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 3px;
+}
+.body_span img{
+  width: 19px;
+}

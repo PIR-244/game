@@ -1,0 +1,138 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+::-moz-selection{background: #fff; color: black;}
+::webkit-selection{background: #fff; color: black;}
+::selection{background: #fff; color: black;}
+body {
+  background: #302314;
+
+}
+li{
+    list-style-type: none;
+}
+#content{
+    background: white;
+  background-image: url(/images/17.jpg);
+  background-repeat: repeat-y;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+   color: black;
+  width: 480px;
+   margin: auto;
+
+}
+.container{
+
+}
+
+#shapka_block{
+    padding: 0 148px 0px 148px;
+
+}
+#shapka{
+    margin: auto;
+    background-image: url(/images/22.png);
+    background-repeat: no-repeat;
+    width: 184px;
+    height: 40px;
+}
+#shapka:hover{
+  background-image: url(/images/nazhat.png);
+  background-repeat: no-repeat;
+}
+#hiNavigation{
+    background-image: url(/images/navitsentr.png);
+    font-size: 12px;
+    padding: 0 50px 0 45px;
+    text-align: center;
+    margin-top: -5px;
+}
+#hiNavigation a:hover {
+     /* Цвет ссылки при наведении на нее курсора мыши */
+    color: #946012;
+     }
+.hi_span{
+  position: relative;
+  height: 16px;
+  width: 16px;
+  top: 3px;
+}
+#hi_span_pochta2{
+  position: relative;
+  top: 1px;
+}
+#hi_span_korpus{
+  position: relative;
+  top: 2px;
+}
+
+#body{
+   font-size: 16px;
+   padding: 5px 30px 0 30px;
+}
+#body ul li {
+  background-image: url(/images/8.png);
+  background-repeat: no-repeat;
+
+}
+.body_div{
+  width: 390px;
+  height: 20px;
+  padding: 5px 15px 5px 15px;
+}
+.body_div:hover{
+background: #cfa970;
+}
+#text a:hover{
+  color: #946012;
+}
+#downNavigation{
+  background-image: url(/images/4.png);
+  background-repeat: no-repeat;
+ background-position: top;
+ padding: 30px 30px 0 30px;
+    font-size: 16px;
+
+}
+#downNavigation ul li{
+padding: 0 15px 3px 15px;
+
+}
+.down_span{
+  position: relative;
+  margin-right: 2px;
+  top: 2px;
+}
+.down_span2{
+  position: relative;
+  margin-right: 2px;
+  top: 3px;
+}
+.down_span img{
+  width: 18px;
+}
+.down_span2 img{
+  width: 18px;
+}
+a {
+    text-decoration: none;
+    color: #563711;
+}
+#downNavigation ul li a:hover {
+     /* Цвет ссылки при наведении на нее курсора мыши */
+    color: #946012;
+     }
+
+#promlogoutNavigation{
+  height: 27px;
+  background-image: url(/images/9.png);
+}
+#logoutNavigation{
+
+}
+#logoutNavigation ul{
+ padding: 10px 0 5px 0;
+ background-image: url(/images/7.png);
+ height: 20px;
+}

@@ -1,0 +1,128 @@
+h3 {
+  padding: 3px 4.2% 15px 4.2%;
+  color: #302314;
+  text-align: center;
+}
+.div_zagolovok{
+  color: #946012;
+  text-align: center;
+  font-weight: 510;
+  margin-bottom: 3px;
+}
+#letters_ul{
+color: #302314;
+  text-align: center;
+  margin-bottom: 7px;
+  font-size: 15px;
+}
+.block_div2{
+  display: block;
+  margin-left: 17%;
+  margin-right: 17%;
+  text-align: center;
+}
+.img_shop2{
+font-size: 10px;
+font-style: italic;
+}
+.button2{
+  border: 0px;
+ background: transparent;
+ color: #563711;
+ font-size: 13px;
+ cursor: pointer;
+}
+.button2:hover{
+ color: #946012;
+}
+p{
+font-size: 16px;
+color: #946012;
+font-weight: 510;
+}
+a:hover{
+  color: #946012;
+}
+#plavanie_table{
+  margin: auto;
+}
+table {
+    table-layout: fixed;
+    width:200px;
+}
+td { word-wrap:break-word; }
+.info_plavanie{
+  text-align: center;
+  width: 90px;
+}
+.info_image{
+  text-align: center;
+  width: 20px;
+}
+.block_plavanie {
+  font-size: 15px;
+  color: #302314;
+}
+.form1 {
+  display: block;
+  text-align: center;
+  margin-bottom: 13px;
+  margin-top: 4px;
+}
+.button1{
+  border: 0px;
+ background: transparent;
+ background-image: url(/images/napastKNP.jpg);
+background-size: 98px 25px;
+ height: 25px;
+ width: 98px;
+ color: transparent;
+ cursor: pointer;
+}
+.button{
+  border: 0px;
+ background: transparent;
+ font-size: 16px;
+ cursor: pointer;
+ color: #563711;
+ display: block;
+ width: 100%;
+ text-align: left;
+}
+.body_div {
+    height: 20px;
+    padding: 4px 3.6% 8px 3.6%;
+}
+.button:hover{
+background: #cfa970;
+}
+.body_span{
+  position: relative;
+  margin-right: 3px;
+  top: 1px;
+}
+.body_span img{
+  width: 17px;
+}
+.body_span1{
+  position: relative;
+  margin-right: 3px;
+  top: 2px;
+}
+.body_span1 img{
+  width: 18px;
+}
+.img_shop{
+    width: 15px;
+    margin-top: 3px;
+    display: inline;
+}
+.img_shop1{
+    margin-bottom: 5px;
+}
+.img_shop3{
+
+    position: relative;
+    top: 2px;
+    display: inline;
+}

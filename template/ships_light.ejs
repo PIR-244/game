@@ -1,0 +1,93 @@
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/ships.css">
+<h3>Легкие суда</h3>
+<p class="img_shop"><img src="/images/verf/legkie_hi.jpg" alt="."></p>
+<div class="ul_li">
+  <p><strong><%= ship[0].name %></strong><br>
+     Корпус: <%= ship[0].hull %><br>
+   Паруса: <%= ship[0].sails %><br>
+    Трюм: <%= ship[0].hold %><br>
+    Скорость: <%= ship[0].speed %><br>
+    Маневренность: <%= ship[0].mobility %><br>
+    Команда: <%= ship[0].team %><br>
+    Орудия(количество): <%= ship[0].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[0].guns.funt_guns %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[0].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="0">
+      <button type="submit" class="button_buy" id="0">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><strong><%= ship[1].name %></strong><br>
+     Корпус: <%= ship[1].hull %><br>
+   Паруса: <%= ship[1].sails %><br>
+    Трюм: <%= ship[1].hold %><br>
+    Скорость: <%= ship[1].speed %><br>
+    Маневренность: <%= ship[1].mobility %><br>
+    Команда: <%= ship[1].team %><br>
+    Орудия(количество): <%= ship[1].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[1].guns.funt_guns %><br>
+    Требование: Уровень навигации <%= ship[1].navigation %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[1].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="1">
+      <button type="submit" class="button_buy" id="1">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><strong><%= ship[2].name %></strong><br>
+     Корпус: <%= ship[2].hull %><br>
+   Паруса: <%= ship[2].sails %><br>
+    Трюм: <%= ship[2].hold %><br>
+    Скорость: <%= ship[2].speed %><br>
+    Маневренность: <%= ship[2].mobility %><br>
+    Команда: <%= ship[2].team %><br>
+    Орудия(количество): <%= ship[2].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[2].guns.funt_guns %><br>
+    Требование: Уровень навигации <%= ship[2].navigation %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[2].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="2">
+      <button type="submit" class="button_buy" id="2">К</button>
+    </form></div>
+</div>
+<div class="ul_li">
+  <p><strong><%= ship[3].name %></strong><br>
+     Корпус: <%= ship[3].hull %><br>
+   Паруса: <%= ship[3].sails %><br>
+    Трюм: <%= ship[3].hold %><br>
+    Скорость: <%= ship[3].speed %><br>
+    Маневренность: <%= ship[3].mobility %><br>
+    Команда: <%= ship[3].team %><br>
+    Орудия(количество): <%= ship[3].guns.number_guns %><br>
+    Орудия(фунты): <%= ship[3].guns.funt_guns %><br>
+    Требование: Уровень навигации <%= ship[3].navigation %></p>
+    <div class="block_div_shop"><span class="span_shop_text">Цена покупки: <%= ship[3].price %> песо</span>
+    <form class="form" action="/verf/ships/confirmation" method="get">
+      <input type="hidden" name="value_ships" value="3">
+      <button type="submit" class="button_buy" id="3">К</button>
+    </form></div>
+</div>
+
+
+<ul class="list_a">
+<li><a href="/verf"><div class="body_div">
+  <span class="body_span3"><img src="/images/city/verf2.png"></span>Верфь</div></a></li>
+</ul>
+
+<script type="text/javascript">
+  var index_ship = '' + <%- JSON.stringify(user.ship.index_ship) %>;
+  if (index_ship >= 0 && index_ship <= 3) {
+    document.getElementById(index_ship).style.width = '0px';
+    document.getElementById(index_ship).style.height = '0px';
+    document.getElementById(index_ship).innerHTML = '';
+  }
+
+  var err_status_low = <%- JSON.stringify(err_status_low) %>;
+  var err_message_low= <%- JSON.stringify(err_message_low) %>;
+    if (err_status_low >= 1 && err_status_low <= 9) {
+      document.getElementById('err_message_low').innerHTML = err_message_low;
+    }
+</script>

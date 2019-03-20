@@ -1,0 +1,56 @@
+<% layout('./layout/page') -%>
+<% block('title', "Корсары") -%>
+<link rel="stylesheet" href="/css/login.css">
+<h3>Придумайте логин и пароль</h3>
+<p id="p1">Допускается использование цифр, русских и латинских букв, а также специальных символов: ".", "-", "_"</p>
+
+<form class="form-horizontal login-form" name="login-form">
+  <div class="form-group">
+    <label for="input-username" class="col-lg-2 control-label"><p>Логин</p></label>
+
+    <div class="col-lg-10">
+      <input name="username" type="text" class="form-control" id="input-username">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="input-password" class="col-lg-2 control-label"><p>Пароль</p></label>
+
+    <div class="col-lg-10">
+      <input name="password"  type="password" class="form-control" id="input-password">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <button type="submit" class="btn btn-primary"><img src="/images/regaKNP.jpg"></button>
+      <div class="help-block error"></div>
+    </div>
+  </div>
+</form>
+
+<script>
+  $(document.forms['login-form']).on('submit', function() {
+    var form = $(this);
+
+    $('.error', form).html('');
+    $(":submit", form).button("loading");
+
+    $.ajax({
+      url: "/registration",
+      method: "POST",
+      data: form.serialize(),
+      complete: function() {
+       $(":submit", form).button("reset");
+      },
+      statusCode: {
+        200: function(){
+          window.location.href = "/";
+        },
+        403: function(jqXHR) {
+          var error = JSON.parse(jqXHR.responseText);
+          $('.error', form).html(error.message);
+        }
+      }
+    });
+   return false;
+  });
+</script>

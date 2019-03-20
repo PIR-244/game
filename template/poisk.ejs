@@ -1,0 +1,43 @@
+
+<% layout('./layout/page') -%>
+<% block('title', 'Корсары'); -%>
+<link rel="stylesheet" href="/css/poisk.css">
+<h3>Поиск</h3>
+<div class="block_div_shop">
+<form class="form" action="/poisk" method="post">
+  <p>Введите имя:</p>
+  <input type="text" maxlength="16" class="input" name="user">
+<br>
+  <button type="submit" class="button_buy">Н</button>
+</form></div>
+<ul id="letters_ul" class="pol_tuskl">
+</ul>
+<script type="text/javascript">
+var poisk_find = <%- JSON.stringify(poisk_find) %>;
+
+
+var letters_ul = document.getElementById('letters_ul');
+if (poisk_find != 0) {
+var last_action_user = <%- JSON.stringify(user.last_action) %>;
+  var last_action = <%- JSON.stringify(last_action) %>;
+  var date_message = new Date(last_action);
+  var date_now = new Date(last_action_user);
+  date_now = Math.floor((date_now.getTime() - date_message.getTime())*0.001);
+  var online = 'onlayn';
+  if (date_now > 30*60) {
+    online = 'offlayn';
+  }
+    var li = document.createElement('li');
+    letters_ul.appendChild(li);
+
+    li.innerHTML = '<div class="body_div1"><img class="img_shop" src="/images/user/'+online+'.png" alt=""><a href="/user/info?user='+poisk_find+'">'+poisk_find+
+                  '</a></div>';
+
+  }
+</script>
+<script type="text/javascript">
+var err_message_low= <%- JSON.stringify(err_message_low) %>;
+  if (err_message_low.length>0) {
+    document.getElementById('err_message_low').innerHTML = err_message_low;
+  }
+</script>
