@@ -9,7 +9,6 @@ exports.get = function (req, res) {
     }
     var online = docs.length;
 
-    console.log(req.user.abilities.damage_team);
   res.render('frontpage',{online: online});
 });
 };
